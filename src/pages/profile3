@@ -1,0 +1,216 @@
+import React, { useState, useEffect } from 'react';
+import { User, Phone, Briefcase, Package, Users, Settings, Bell, Shield, Clock, DollarSign, Building, Mail, MapPin, Calendar, TrendingUp, Award, Zap, Target, Globe, Mic, HeadphonesIcon, Brain, BarChart3, Activity, Star, CheckCircle, AlertTriangle, MessageSquare, Volume2, Palette, Sparkles, Crown, Gem, Database, FileText, Slack, Chrome, Smartphone, Cloud, Lock, Headphones } from 'lucide-react';
+
+export default function ReceptionistAIProfile() {
+  const [activeTab, setActiveTab] = useState('profile');
+  const [isLoading, setIsLoading] = useState(false);
+  const [animateStats, setAnimateStats] = useState(false);
+  const [profileData, setProfileData] = useState({
+    businessName: 'Acme Corporation',
+    ownerName: 'John Smith',
+    email: 'john.smith@acme.com',
+    phone: '+1 (555) 123-4567',
+    address: '123 Business Ave, New York, NY 10001',
+    website: 'www.acme.com',
+    profession: 'Healthcare',
+    expectedCalls: '50-100',
+    businessHours: '9:00 AM - 6:00 PM',
+    timezone: 'EST',
+    businessType: 'enterprise',
+    staffCount: '15',
+    inventoryCost: '250000',
+    monthlyRevenue: '500000',
+    customerSatisfaction: '96',
+    responseTime: '2.3',
+    greeting: 'Thank you for calling Acme Corporation. How may I assist you today?',
+    transferRules: 'urgent',
+    voiceType: 'professional',
+    language: 'english',
+    personalityTrait: 'warm',
+    aiLevel: 'advanced',
+    integrations: ['salesforce', 'hubspot', 'slack'],
+    callRecording: true,
+    sentiment: true,
+    analytics: true,
+    multilingual: true
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimateStats(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const tabs = [
+    { id: 'profile', label: 'Profile', icon: User },
+    { id: 'business', label: 'Business', icon: Briefcase },
+    { id: 'operations', label: 'Operations', icon: Package },
+    { id: 'ai-settings', label: 'AI Engine', icon: Brain },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+    { id: 'integrations', label: 'Integrations', icon: Zap }
+  ];
+
+  const handleInputChange = (field, value) => {
+    setProfileData(prev => ({ ...prev, [field]: value }));
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 300);
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'profile':
+        return <ProfileTab data={profileData} onUpdate={handleInputChange} />;
+      case 'business':
+        return <BusinessTab data={profileData} onUpdate={handleInputChange} />;
+      case 'operations':
+        return <OperationsTab data={profileData} />;
+      case 'ai-settings':
+        return <AISettingsTab data={profileData} onUpdate={handleInputChange} />;
+      case 'analytics':
+        return <AnalyticsTab />;
+      case 'integrations':
+        return <IntegrationsTab data={profileData} onUpdate={handleInputChange} />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="bg-gray-50 min-h-screen p-8 font-sans">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold text-gray-800">Account Dashboard</h1>
+        <p className="text-gray-500 mt-1">Welcome back, {profileData.ownerName}. Here's your business overview.</p>
+      </header>
+
+      <div className="flex items-start gap-8">
+        <nav className="w-64 bg-white p-4 rounded-2xl shadow-md flex flex-col gap-2">
+          {tabs.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center w-full text-left p-3 rounded-lg transition-all duration-300 ${activeTab === tab.id ? 'bg-gray-800 text-white shadow-lg' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'}`}>
+              <tab.icon className="w-5 h-5 mr-3" />
+              <span className="font-medium">{tab.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        <main className="flex-1">
+          <div className="bg-white p-8 rounded-2xl shadow-md min-h-[600px]">
+            {renderContent()}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+const Section = ({ title, description, children }) => (
+  <div className="mb-8">
+    <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
+    <p className="text-gray-500 mb-6">{description}</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">{children}</div>
+  </div>
+);
+
+const InfoField = ({ icon: Icon, label, value }) => (
+  <div className="bg-gray-50 p-4 rounded-lg flex items-center">
+    <Icon className="w-5 h-5 text-gray-400 mr-4" />
+    <div>
+      <p className="text-sm text-gray-500 font-medium">{label}</p>
+      <p className="text-gray-800 font-semibold">{value}</p>
+    </div>
+  </div>
+);
+
+const StatCard = ({ icon: Icon, value, label, trend, gradient }) => (
+    <div className={`relative overflow-hidden bg-gradient-to-br ${gradient} rounded-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl group`}>
+      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <Icon className="w-8 h-8 opacity-80" />
+          {trend && (
+            <div className="flex items-center space-x-1 bg-white bg-opacity-20 rounded-full px-2 py-1">
+              <TrendingUp className="w-3 h-3" />
+              <span className="text-xs font-semibold">{trend}</span>
+            </div>
+          )}
+        </div>
+        <p className="text-3xl font-bold">{value}</p>
+        <p className="text-sm opacity-80">{label}</p>
+      </div>
+    </div>
+  );
+
+const ProfileTab = ({ data, onUpdate }) => (
+  <Section title="Personal & Business Information" description="Manage your contact and business details.">
+    <InfoField icon={Building} label="Business Name" value={data.businessName} />
+    <InfoField icon={User} label="Owner Name" value={data.ownerName} />
+    <InfoField icon={Mail} label="Email Address" value={data.email} />
+    <InfoField icon={Phone} label="Phone Number" value={data.phone} />
+    <InfoField icon={MapPin} label="Business Address" value={data.address} />
+    <InfoField icon={Globe} label="Website" value={data.website} />
+  </Section>
+);
+
+const BusinessTab = ({ data, onUpdate }) => (
+  <Section title="Business Settings" description="Configure settings related to your business operations.">
+    <InfoField icon={Briefcase} label="Profession" value={data.profession} />
+    <InfoField icon={Users} label="Expected Daily Calls" value={data.expectedCalls} />
+    <InfoField icon={Clock} label="Business Hours" value={data.businessHours} />
+    <InfoField icon={Globe} label="Timezone" value={data.timezone} />
+    <InfoField icon={Award} label="Business Type" value={data.businessType} />
+  </Section>
+);
+
+const OperationsTab = ({ data }) => (
+  <Section title="Operational Insights" description="Key metrics about your business performance.">
+    <StatCard icon={Users} value={data.staffCount} label="Staff Members" gradient="from-blue-500 to-cyan-400" />
+    <StatCard icon={DollarSign} value={`$${Number(data.monthlyRevenue).toLocaleString()}`} label="Monthly Revenue" trend="+5.2%" gradient="from-emerald-500 to-green-400" />
+    <StatCard icon={CheckCircle} value={`${data.customerSatisfaction}%`} label="Customer Satisfaction" trend="+1.8%" gradient="from-amber-500 to-yellow-400" />
+    <StatCard icon={Activity} value={`${data.responseTime}s`} label="Avg. Response Time" trend="-0.2s" gradient="from-rose-500 to-pink-400" />
+  </Section>
+);
+
+const AISettingsTab = ({ data, onUpdate }) => (
+  <Section title="AI Engine Configuration" description="Customize your AI receptionist's behavior and personality.">
+    <InfoField icon={MessageSquare} label="Greeting Message" value={data.greeting} />
+    <InfoField icon={Zap} label="Call Transfer Rules" value={data.transferRules} />
+    <InfoField icon={Volume2} label="Voice Type" value={data.voiceType} />
+    <InfoField icon={Globe} label="Language" value={data.language} />
+    <InfoField icon={Sparkles} label="Personality Trait" value={data.personalityTrait} />
+    <InfoField icon={Crown} label="AI Tier" value={data.aiLevel} />
+  </Section>
+);
+
+const AnalyticsTab = () => (
+    <div className="text-center p-8">
+        <BarChart3 className="mx-auto w-16 h-16 text-gray-300 mb-4" />
+        <h2 className="text-2xl font-bold text-gray-800">Advanced Analytics</h2>
+        <p className="text-gray-500">Analytics dashboard coming soon. Get ready for deep insights!</p>
+    </div>
+);
+
+const IntegrationsTab = ({ data, onUpdate }) => (
+  <Section title="Integrations & Features" description="Connect your favorite tools and manage advanced features.">
+    <div className="md:col-span-2">
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">Connected Apps</h3>
+        <div className="flex space-x-4">
+            {data.integrations.map(app => <div key={app} className="bg-gray-100 px-4 py-2 rounded-lg font-medium capitalize">{app}</div>)}
+        </div>
+    </div>
+    <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+        <div>
+            <p className="font-semibold text-gray-800">Call Recording</p>
+            <p className="text-sm text-gray-500">Record all incoming and outgoing calls.</p>
+        </div>
+        <input type="checkbox" className="toggle" checked={data.callRecording} onChange={e => onUpdate('callRecording', e.target.checked)} />
+    </div>
+    <div className="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+        <div>
+            <p className="font-semibold text-gray-800">Sentiment Analysis</p>
+            <p className="text-sm text-gray-500">Analyze customer sentiment in real-time.</p>
+        </div>
+        <input type="checkbox" className="toggle" checked={data.sentiment} onChange={e => onUpdate('sentiment', e.target.checked)} />
+    </div>
+  </Section>
+);

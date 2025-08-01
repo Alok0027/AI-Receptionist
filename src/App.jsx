@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Footer from './components/Footer';
 import Dashboard from './components/dashboard';
 import Callmanage from './pages/Callmanage';
 import Appointment from './pages/Appointment';
@@ -13,6 +14,8 @@ import Integration from './pages/Integration';
 import SupportHelpPage from './pages/SupportHelpPage';
 import Profile from './pages/Profile';
 import SoftwareLayout from './components/SoftwareLayout';
+import Contact from './components/Contact';
+import UpdatesPage from './pages/Updates';
 
 function AppContent() {
   const location = useLocation();
@@ -25,6 +28,8 @@ function AppContent() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/updates" element={<UpdatesPage />} />
         <Route
           path="/dashboard/*"
           element={
@@ -92,6 +97,7 @@ function AppContent() {
           }
         />
       </Routes>
+      {!isSoftwarePage && <Footer />}
     </>
   );
 }

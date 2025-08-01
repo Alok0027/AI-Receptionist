@@ -40,25 +40,34 @@ const Navbar = () => {
                         Features
                     </Link>
                     <Link
-                        to=""
+                        to="/#pricing"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const pricingSection = document.getElementById('pricing');
+                            if (pricingSection) {
+                                pricingSection.scrollIntoView({ behavior: 'smooth' });
+                            } else {
+                                window.location.href = '/#pricing';
+                            }
+                        }}
                         className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
                     >
                         Pricing
                     </Link>
                     <Link
-                        to=""
+                        to="/updates"
                         className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
                     >
                         Services
                     </Link>
                     <Link
-                        to=""
+                        to="/updates"
                         className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
                     >
                         Updates
                     </Link>
                     <Link
-                        to=""
+                        to="/contact"
                         className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
                     >
                         Contact

@@ -2,7 +2,7 @@ import tick from "../assets/tick.svg";
 
 const Pricing = () => {
     return(
-        <section className="max-w-7xl mx-auto my-8 p-6 bg-white rounded-lg">
+        <section id="pricing" className="max-w-7xl mx-auto my-8 p-6 bg-white rounded-lg">
             <div className=" text-center text-4xl font-medium text-black">
                 Simple Price For All
             </div>

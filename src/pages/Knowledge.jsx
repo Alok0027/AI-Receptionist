@@ -48,14 +48,14 @@ const Knowledge = () => {
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg min-h-screen">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Knowledge Base Management</h1>
+      <h1 className="text-3xl font-medium text-gray-800 mb-8">Knowledge Base Management</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column */}
         <div className="space-y-8">
           {/* File Upload Section */}
           <div className="bg-gray-50 p-6 rounded-xl shadow-md">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Train AI from a Source</h2>
+            <h2 className="text-xl font-normal text-gray-700 mb-4">Train AI from a Source</h2>
             <p className="text-gray-600 mb-4">Upload documents (.pdf, .docx, .txt) or website URLs to train the AI.</p>
             <div className="flex items-center space-x-4">
               <input
@@ -81,7 +81,7 @@ const Knowledge = () => {
 
           {/* AI Response Testing Section */}
           <div className="bg-gray-50 p-6 rounded-xl shadow-md">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Test AI Responses (Simulation)</h2>
+            <h2 className="text-xl font-normal text-gray-700 mb-4">Test AI Responses (Simulation)</h2>
             <form onSubmit={handleTestQuery} className="space-y-4">
               <div className="flex space-x-2">
                 <input
@@ -98,7 +98,7 @@ const Knowledge = () => {
             </form>
             {testResponse && (
               <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="font-semibold text-blue-800">AI Response:</p>
+                <p className="font-normal text-blue-800">AI Response:</p>
                 <p className="text-gray-700">{testResponse}</p>
               </div>
             )}
@@ -107,7 +107,7 @@ const Knowledge = () => {
 
         {/* Right Column */}
         <div className="bg-gray-50 p-6 rounded-xl shadow-md">
-          <h2 className="text-xl font-semibold text-gray-700 mb-4">Manage FAQs</h2>
+          <h2 className="text-xl font-normal text-gray-700 mb-4">Manage FAQs</h2>
           
           {/* Add/Edit FAQ Form */}
           <form onSubmit={handleAddFaq} className="space-y-4 mb-6">
@@ -136,7 +136,7 @@ const Knowledge = () => {
           <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
             {faqs.map(faq => (
               <div key={faq.id} className="bg-white p-4 rounded-lg border border-gray-200">
-                <p className="font-semibold text-gray-800">{faq.question}</p>
+                <p className="font-normal text-gray-800">{faq.question}</p>
                 <p className="text-gray-600 mt-1">{faq.answer}</p>
                 <div className="flex items-center justify-end space-x-2 mt-2">
                   <button onClick={() => handleEditFaq(faq)} className="text-gray-500 hover:text-gray-700">

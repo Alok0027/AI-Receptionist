@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import kairologo from "../assets/kairologo.png";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,24 +23,33 @@ const Navbar = () => {
         };
     }, []);
 
+    const handleScrollToSection = (sectionId) => {
+        if (location.pathname === '/') {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            navigate(`/#${sectionId}`);
+        }
+    };
+
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/10 backdrop-blur-sm' : 'bg-transparent'}`}>
             <div className="max-w-7xl flex flex-row justify-between items-center my-4 mx-auto">
                 <h1>
                     <Link
                         to="/"
-                        className="text-3xl font-bold relative text-black drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+                        className="text-3xl font-medium relative text-black drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]"
                     >
                         <img src={kairologo} alt="Kairo Logo" className="w-auto h-12 inline-block mr-2" />
                     </Link>
                 </h1>
                 <div className="flex gap-4 text-sm">
-                    <Link
-                        to=""
-                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
+                    <a
+                        href="/#features"
+                        onClick={(e) => { e.preventDefault(); handleScrollToSection('features'); }}
+                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)] cursor-pointer"
                     >
                         Features
-                    </Link>
+                    </a>
                     <Link
                         to="/#pricing"
                         onClick={(e) => {

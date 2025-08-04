@@ -35,17 +35,18 @@ const Team = () => {
     };
     
     return (
-        <section className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center px-4">
-            <div className=" text-left text-4xl font-medium mb-8">
-                Team Behind Success
-            </div>
-            <div className="text-center text-gray-600 mb-12">
-                Meet the experts behind our AI—driven to deliver smart solutions.
-            </div>
+        <div id="team" className="min-h-screen bg-stone-50">
+            <section className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center px-4 py-16">
+                <div className="text-center text-4xl font-medium mb-8 text-stone-900">
+                    Team Behind Success
+                </div>
+                <div className="text-center text-stone-600 mb-12">
+                    Meet the experts behind our AI—driven to deliver smart solutions.
+                </div>
             <div className="w-full relative flex justify-center items-center">
                 <button
                     onClick={() => scroll(-1)}
-                    className="absolute left-0 z-10 bg-white border rounded-full p-2 shadow-md"
+                    className="absolute left-0 z-10 bg-white border border-stone-200 rounded-full p-2 shadow-md hover:bg-stone-50 transition-colors"
                 >
                     ◀
                 </button>
@@ -61,7 +62,7 @@ const Team = () => {
                                 key={i}
                                 className="w-[380px] h-[28rem] bg-white rounded-2xl shadow-md p-4 flex-shrink-0"
                             >
-                                <div className="text-lg font-semibold">{member.name}</div>
+                                <div className="text-lg font-normal">{member.name}</div>
                                 <div className="text-sm text-gray-500 mb-4">{member.role}</div>
 
                                 <div className="flex gap-2 mb-4">
@@ -83,12 +84,13 @@ const Team = () => {
                 </div>
                 <button
                     onClick={() => scroll(1)}
-                    className="absolute right-0 z-10 bg-white border rounded-full p-2 shadow-md"
+                    className="absolute right-0 z-10 bg-white border border-stone-200 rounded-full p-2 shadow-md hover:bg-stone-50 transition-colors"
                 >
                     ▶
                 </button>
             </div>
-        </section>
+            </section>
+        </div>
     );
 }
 export default Team;

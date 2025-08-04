@@ -95,11 +95,11 @@ export default function ReceptionistAIProfile() {
           {trend && (
             <div className="flex items-center space-x-1 bg-stone-100 rounded-full px-2 py-1">
               <TrendingUp className="w-3 h-3 text-stone-600" />
-              <span className="text-xs font-semibold text-stone-600">{trend}</span>
+              <span className="text-xs font-normal text-stone-600">{trend}</span>
             </div>
           )}
         </div>
-        <div className={`text-3xl font-bold mb-1 ${animateStats ? 'animate-pulse' : ''}`}>
+        <div className={`text-3xl font-medium mb-1 ${animateStats ? 'animate-pulse' : ''}`}>
           {value}
         </div>
         <div className="text-sm text-stone-500">{label}</div>
@@ -114,7 +114,7 @@ export default function ReceptionistAIProfile() {
         : 'border-stone-100 bg-stone-50'
     }`}>
       {premium && (
-        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs px-2 py-1 rounded-full font-normal">
           <Crown className="w-3 h-3 inline mr-1" />
           PRO
         </div>
@@ -124,7 +124,7 @@ export default function ReceptionistAIProfile() {
       }`}>
         <Icon className={`w-6 h-6 ${enabled ? 'text-white' : 'text-stone-500'}`} />
       </div>
-      <h4 className={`font-semibold mb-2 ${enabled ? 'text-stone-800' : 'text-stone-500'}`}>
+      <h4 className={`font-normal mb-2 ${enabled ? 'text-stone-800' : 'text-stone-500'}`}>
         {title}
       </h4>
       <p className={`text-sm ${enabled ? 'text-stone-600' : 'text-stone-400'}`}>
@@ -157,7 +157,7 @@ export default function ReceptionistAIProfile() {
                     <User className="w-12 h-12 text-stone-600" />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-bold mb-2">{profileData.businessName}</h2>
+                    <h2 className="text-3xl font-medium mb-2">{profileData.businessName}</h2>
                     <p className="text-stone-600 text-lg">AI-Powered Reception</p>
                     <div className="flex items-center space-x-4 mt-2">
                       <div className="flex items-center space-x-1">
@@ -184,17 +184,17 @@ export default function ReceptionistAIProfile() {
                   <div className="bg-white rounded-2xl p-4 border-2 border-stone-100">
                     <div className="flex items-center space-x-2 mb-2">
                       <Zap className="w-5 h-5 text-black" />
-                      <span className="text-sm font-semibold text-stone-600">AI Performance</span>
+                      <span className="text-sm font-normal text-stone-600">AI Performance</span>
                     </div>
-                    <div className="text-2xl font-bold text-stone-800">98.5%</div>
+                    <div className="text-2xl font-medium text-stone-800">98.5%</div>
                   </div>
                   
                   <div className="bg-white rounded-2xl p-4 border-2 border-stone-100">
                     <div className="flex items-center space-x-2 mb-2">
                       <Globe className="w-5 h-5 text-black" />
-                      <span className="text-sm font-semibold text-stone-600">Global Reach</span>
+                      <span className="text-sm font-normal text-stone-600">Global Reach</span>
                     </div>
-                    <div className="text-2xl font-bold text-stone-800">24/7</div>
+                    <div className="text-2xl font-medium text-stone-800">24/7</div>
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function ReceptionistAIProfile() {
                   <User className="w-8 h-8 text-stone-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-stone-800">Business Profile</h3>
+                  <h3 className="text-2xl font-medium text-stone-800">Business Profile</h3>
                   <p className="text-stone-600">Manage your professional identity and contact information</p>
                 </div>
               </div>
@@ -215,7 +215,7 @@ export default function ReceptionistAIProfile() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="group">
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Business Name</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Business Name</label>
                     <div className="relative">
                       <Building className="absolute left-4 top-4 w-5 h-5 text-stone-400 group-hover:text-stone-600 transition-colors" />
                       <input
@@ -228,7 +228,7 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="group">
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Owner Name</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Owner Name</label>
                     <div className="relative">
                       <User className="absolute left-4 top-4 w-5 h-5 text-stone-400 group-hover:text-stone-600 transition-colors" />
                       <input
@@ -241,7 +241,7 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="group">
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Email Address</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Email Address</label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-4 w-5 h-5 text-stone-400 group-hover:text-stone-600 transition-colors" />
                       <input
@@ -256,7 +256,7 @@ export default function ReceptionistAIProfile() {
                 
                 <div className="space-y-6">
                   <div className="group">
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Phone Number</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Phone Number</label>
                     <div className="relative">
                       <Phone className="absolute left-4 top-4 w-5 h-5 text-stone-400 group-hover:text-stone-600 transition-colors" />
                       <input
@@ -269,7 +269,7 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="group">
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Website</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Website</label>
                     <div className="relative">
                       <Globe className="absolute left-4 top-4 w-5 h-5 text-stone-400 group-hover:text-stone-600 transition-colors" />
                       <input
@@ -282,7 +282,7 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="group">
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Business Address</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Business Address</label>
                     <div className="relative">
                       <MapPin className="absolute left-4 top-4 w-5 h-5 text-stone-400 group-hover:text-stone-600 transition-colors" />
                       <textarea
@@ -335,11 +335,11 @@ export default function ReceptionistAIProfile() {
                     <Briefcase className="w-8 h-8 text-stone-600" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-stone-800">Business Configuration</h3>
+                    <h3 className="text-2xl font-medium text-stone-800">Business Configuration</h3>
                     <p className="text-stone-600">Optimize your business settings for maximum efficiency</p>
                   </div>
                 </div>
-                <div className="bg-gray-50 text-black px-4 py-2 rounded-full text-sm font-semibold">
+                <div className="bg-gray-50 text-black px-4 py-2 rounded-full text-sm font-normal">
                   <Sparkles className="w-4 h-4 inline mr-1" />
                   Optimized
                 </div>
@@ -348,7 +348,7 @@ export default function ReceptionistAIProfile() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-bold text-stone-700 mb-4">Industry Sector</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-4">Industry Sector</label>
                     <div className="space-y-3">
                       {professionOptions.map(option => (
                         <label key={option.value} className="flex items-center justify-between p-4 border-2 border-stone-200 rounded-2xl hover:border-stone-300 cursor-pointer transition-all group">
@@ -393,7 +393,7 @@ export default function ReceptionistAIProfile() {
                               className="w-5 h-5 text-stone-600"
                             />
                             <div>
-                              <div className="font-semibold text-stone-800">{option.value} calls/day</div>
+                              <div className="font-normal text-stone-800">{option.value} calls/day</div>
                               <div className={`text-sm font-medium ${option.color}`}>{option.level}</div>
                             </div>
                           </div>
@@ -406,13 +406,13 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="bg-gradient-to-br from-stone-50 to-neutral-50 rounded-2xl p-6 border border-stone-200">
-                    <h4 className="font-bold text-stone-800 mb-4 flex items-center">
+                    <h4 className="font-medium text-stone-800 mb-4 flex items-center">
                       <Clock className="w-5 h-5 mr-2" />
                       Operating Schedule
                     </h4>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-stone-700 mb-2">Business Hours</label>
+                        <label className="block text-sm font-normal text-stone-700 mb-2">Business Hours</label>
                         <input
                           type="text"
                           value={profileData.businessHours}
@@ -421,7 +421,7 @@ export default function ReceptionistAIProfile() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-stone-700 mb-2">Timezone</label>
+                        <label className="block text-sm font-normal text-stone-700 mb-2">Timezone</label>
                         <select
                           value={profileData.timezone}
                           onChange={(e) => handleInputChange('timezone', e.target.value)}
@@ -484,7 +484,7 @@ export default function ReceptionistAIProfile() {
                   <Package className="w-8 h-8 text-stone-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-stone-800">Operational Dashboard</h3>
+                  <h3 className="text-2xl font-medium text-stone-800">Operational Dashboard</h3>
                   <p className="text-stone-600">Monitor and optimize your business performance</p>
                 </div>
               </div>
@@ -495,9 +495,9 @@ export default function ReceptionistAIProfile() {
                     <div className="bg-gradient-to-br from-stone-50 to-gray-50 rounded-2xl p-6 border-2 border-gray-100">
                       <div className="flex items-center justify-between mb-4">
                         <Users className="w-8 h-8 text-black" />
-                        <div className="bg-gray-100 text-black px-3 py-1 rounded-full text-sm font-semibold">Active</div>
+                        <div className="bg-gray-100 text-black px-3 py-1 rounded-full text-sm font-normal">Active</div>
                       </div>
-                      <div className="text-3xl font-bold text-black mb-2">{profileData.staffCount}</div>
+                      <div className="text-3xl font-medium text-black mb-2">{profileData.staffCount}</div>
                       <div className="text-black font-medium mb-4">Staff Members</div>
                       <input
                         type="number"
@@ -556,25 +556,25 @@ export default function ReceptionistAIProfile() {
                   
                   {/* Performance Analytics */}
                   <div className="bg-gradient-to-br from-stone-50 to-neutral-50 rounded-2xl p-6 border border-stone-200">
-                    <h4 className="text-lg font-bold text-stone-800 mb-6 flex items-center">
+                    <h4 className="text-lg font-medium text-stone-800 mb-6 flex items-center">
                       <BarChart3 className="w-5 h-5 mr-2" />
                       Performance Analytics
                     </h4>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-stone-800">₹{Math.round(parseInt(profileData.monthlyRevenue) / parseInt(profileData.staffCount)).toLocaleString()}</div>
+                        <div className="text-2xl font-medium text-stone-800">₹{Math.round(parseInt(profileData.monthlyRevenue) / parseInt(profileData.staffCount)).toLocaleString()}</div>
                         <div className="text-sm text-stone-600">Revenue per Staff</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-stone-800">₹{Math.round(parseInt(profileData.inventoryCost) / parseInt(profileData.staffCount)).toLocaleString()}</div>
+                        <div className="text-2xl font-medium text-stone-800">₹{Math.round(parseInt(profileData.inventoryCost) / parseInt(profileData.staffCount)).toLocaleString()}</div>
                         <div className="text-sm text-stone-600">Assets per Staff</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-stone-800">{profileData.responseTime}s</div>
+                        <div className="text-2xl font-medium text-stone-800">{profileData.responseTime}s</div>
                         <div className="text-sm text-stone-600">Avg. Response</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-stone-800">{Math.round((parseInt(profileData.monthlyRevenue) / 30) / parseInt(profileData.expectedCalls.split('-')[1] || profileData.expectedCalls.split('-')[0]))}</div>
+                        <div className="text-2xl font-medium text-stone-800">{Math.round((parseInt(profileData.monthlyRevenue) / 30) / parseInt(profileData.expectedCalls.split('-')[1] || profileData.expectedCalls.split('-')[0]))}</div>
                         <div className="text-sm text-stone-600">Revenue per Call</div>
                       </div>
                     </div>
@@ -584,7 +584,7 @@ export default function ReceptionistAIProfile() {
                 {/* Quick Actions Sidebar */}
                 <div className="space-y-6">
                   <div className="bg-white rounded-2xl p-6 border-2 border-stone-100">
-                    <h4 className="font-bold mb-4 flex items-center text-stone-800">
+                    <h4 className="font-medium mb-4 flex items-center text-stone-800">
                       <Zap className="w-5 h-5 mr-2 text-black-500" />
                       Quick Actions
                     </h4>
@@ -681,11 +681,11 @@ export default function ReceptionistAIProfile() {
                     <Brain className="w-8 h-8 text-stone-600" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-stone-800">AI Engine Configuration</h3>
+                    <h3 className="text-2xl font-medium text-stone-800">AI Engine Configuration</h3>
                     <p className="text-stone-600">Fine-tune your AI receptionist's behavior and personality</p>
                   </div>
                 </div>
-                <div className="bg-gray-50 text-black px-4 py-2 rounded-full text-sm font-semibold">
+                <div className="bg-gray-50 text-black px-4 py-2 rounded-full text-sm font-normal">
                   <Brain className="w-4 h-4 inline mr-1" />
                   Advanced AI
                 </div>
@@ -694,14 +694,14 @@ export default function ReceptionistAIProfile() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="bg-gradient-to-br from-stone-50 to-neutral-50 rounded-2xl p-6 border border-stone-200">
-                    <h4 className="font-bold text-stone-800 mb-4 flex items-center">
+                    <h4 className="font-medium text-stone-800 mb-4 flex items-center">
                       <Volume2 className="w-5 h-5 mr-2" />
                       Voice & Personality
                     </h4>
                     
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-stone-700 mb-3">Voice Type</label>
+                        <label className="block text-sm font-normal text-stone-700 mb-3">Voice Type</label>
                         <div className="grid grid-cols-2 gap-3">
                           {[
                             { value: 'professional', label: 'Professional', icon: '👔' },
@@ -728,7 +728,7 @@ export default function ReceptionistAIProfile() {
                       </div>
                       
                       <div>
-                        <label className="block text-sm font-semibold text-stone-700 mb-3">Personality Trait</label>
+                        <label className="block text-sm font-normal text-stone-700 mb-3">Personality Trait</label>
                         <select
                           value={profileData.personalityTrait}
                           onChange={(e) => handleInputChange('personalityTrait', e.target.value)}
@@ -744,14 +744,14 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="bg-gradient-to-br from-stone-50 to-gray-50 rounded-2xl p-6 border border-gray-200">
-                    <h4 className="font-bold text-black mb-4 flex items-center">
+                    <h4 className="font-medium text-black mb-4 flex items-center">
                       <Globe className="w-5 h-5 mr-2" />
                       Language Settings
                     </h4>
                     
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-black mb-2">Primary Language</label>
+                        <label className="block text-sm font-normal text-black mb-2">Primary Language</label>
                         <select
                           value={profileData.language}
                           onChange={(e) => handleInputChange('language', e.target.value)}
@@ -768,7 +768,7 @@ export default function ReceptionistAIProfile() {
                       
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-semibold text-black">Multilingual Support</div>
+                          <div className="font-normal text-black">Multilingual Support</div>
                           <div className="text-sm text-black">Auto-detect and respond in caller's language</div>
                         </div>
                         <label className="relative inline-flex items-center cursor-pointer">
@@ -782,7 +782,7 @@ export default function ReceptionistAIProfile() {
                 
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-bold text-stone-700 mb-3">Custom Greeting Message</label>
+                    <label className="block text-sm font-medium text-stone-700 mb-3">Custom Greeting Message</label>
                     <div className="relative">
                       <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-stone-400" />
                       <textarea
@@ -799,14 +799,14 @@ export default function ReceptionistAIProfile() {
                   </div>
                   
                   <div className="bg-gradient-to-br from-stone-50 to-gray-50 rounded-2xl p-6 border border-gray-200">
-                    <h4 className="font-bold text-black mb-4 flex items-center">
+                    <h4 className="font-medium text-black mb-4 flex items-center">
                       <Settings className="w-5 h-5 mr-2" />
                       Advanced Settings
                     </h4>
                     
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-black mb-2">Call Transfer Rules</label>
+                        <label className="block text-sm font-normal text-black mb-2">Call Transfer Rules</label>
                         <select
                           value={profileData.transferRules}
                           onChange={(e) => handleInputChange('transferRules', e.target.value)}
@@ -820,7 +820,7 @@ export default function ReceptionistAIProfile() {
                       </div>
                       
                       <div>
-                        <label className="block text-sm font-semibold text-black mb-2">AI Intelligence Level</label>
+                        <label className="block text-sm font-normal text-black mb-2">AI Intelligence Level</label>
                         <select
                           value={profileData.aiLevel}
                           onChange={(e) => handleInputChange('aiLevel', e.target.value)}
@@ -883,7 +883,7 @@ export default function ReceptionistAIProfile() {
                     <BarChart3 className="w-8 h-8 text-stone-600" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-stone-800">Performance Analytics</h3>
+                    <h3 className="text-2xl font-medium text-stone-800">Performance Analytics</h3>
                     <p className="text-stone-600">Comprehensive insights into your AI receptionist performance</p>
                   </div>
                 </div>
@@ -904,27 +904,27 @@ export default function ReceptionistAIProfile() {
                 <div className="lg:col-span-2 space-y-6">
                   {/* Call Analytics */}
                   <div className="bg-gradient-to-br from-stone-50 to-gray-50 rounded-2xl p-6 border border-gray-200">
-                    <h4 className="font-bold text-black mb-6 flex items-center">
+                    <h4 className="font-medium text-black mb-6 flex items-center">
                       <Phone className="w-5 h-5 mr-2" />
                       Call Analytics
                     </h4>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-black">847</div>
+                        <div className="text-3xl font-medium text-black">847</div>
                         <div className="text-sm text-black">Successful</div>
                         <div className="w-full bg-gray-300 rounded-full h-2 mt-2">
                           <div className="bg-black h-2 rounded-full" style={{width: '85%'}}></div>
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-black">142</div>
+                        <div className="text-3xl font-medium text-black">142</div>
                         <div className="text-sm text-black">Transferred</div>
                         <div className="w-full bg-gray-300 rounded-full h-2 mt-2">
                           <div className="bg-black h-2 rounded-full" style={{width: '30%'}}></div>
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-black">23</div>
+                        <div className="text-3xl font-medium text-black">23</div>
                         <div className="text-sm text-black">Missed</div>
                         <div className="w-full bg-gray-300 rounded-full h-2 mt-2">
                           <div className="bg-black h-2 rounded-full" style={{width: '5%'}}></div>
@@ -935,7 +935,7 @@ export default function ReceptionistAIProfile() {
                   
                   {/* Satisfaction Metrics */}
                   <div className="bg-gradient-to-br from-stone-50 to-gray-50 rounded-2xl p-6 border border-gray-200">
-                    <h4 className="font-bold text-black mb-6 flex items-center">
+                    <h4 className="font-medium text-black mb-6 flex items-center">
                       <Star className="w-5 h-5 mr-2" />
                       Customer Satisfaction
                     </h4>
@@ -947,7 +947,7 @@ export default function ReceptionistAIProfile() {
                               <Star key={i} className="w-4 h-4 text-black fill-current" />
                             ))}
                           </div>
-                          <div className="text-2xl font-bold text-black">
+                          <div className="text-2xl font-medium text-black">
                             {rating === 5 ? '68%' : rating === 4 ? '24%' : rating === 3 ? '6%' : rating === 2 ? '1%' : '1%'}
                           </div>
                           <div className="text-sm text-black">{rating} stars</div>
@@ -960,7 +960,7 @@ export default function ReceptionistAIProfile() {
                 {/* Performance Insights */}
                 <div className="space-y-6">
                   <div className="bg-white rounded-2xl p-6 border-2 border-stone-100">
-                    <h4 className="font-bold mb-4 flex items-center text-stone-800">
+                    <h4 className="font-medium mb-4 flex items-center text-stone-800">
                       <Activity className="w-5 h-5 mr-2 text-emerald-500" />
                       Live Insights
                     </h4>
@@ -971,21 +971,21 @@ export default function ReceptionistAIProfile() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-stone-600">Active Calls</span>
-                        <span className="font-bold text-stone-800">3</span>
+                        <span className="font-medium text-stone-800">3</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-stone-600">Queue Length</span>
-                        <span className="font-bold text-stone-800">0</span>
+                        <span className="font-medium text-stone-800">0</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-stone-600">Response Time</span>
-                        <span className="font-bold text-emerald-500">2.1s</span>
+                        <span className="font-medium text-emerald-500">2.1s</span>
                       </div>
                     </div>
                   </div>
                   
                   <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200">
-                    <h4 className="font-bold text-yellow-800 mb-4 flex items-center">
+                    <h4 className="font-medium text-yellow-800 mb-4 flex items-center">
                       <AlertTriangle className="w-5 h-5 mr-2" />
                       Alerts & Notifications
                     </h4>
@@ -1042,7 +1042,7 @@ export default function ReceptionistAIProfile() {
                     <Zap className="w-8 h-8 text-stone-600" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-stone-800">Integration Dashboard</h3>
+                    <h3 className="text-2xl font-medium text-stone-800">Integration Dashboard</h3>
                     <p className="text-stone-600">Manage and monitor your integrations</p>
                   </div>
                 </div>
@@ -1052,33 +1052,33 @@ export default function ReceptionistAIProfile() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="bg-gradient-to-br from-stone-50 to-neutral-50 rounded-2xl p-6 border border-stone-200">
-                    <h4 className="font-bold text-stone-800 mb-4 flex items-center">
+                    <h4 className="font-medium text-stone-800 mb-4 flex items-center">
                       <Crown className="w-5 h-5 mr-2" />
                       Premium Integrations
                     </h4>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-semibold text-stone-800">Salesforce</div>
+                          <div className="font-normal text-stone-800">Salesforce</div>
                           <div className="text-sm text-stone-600">CRM integration</div>
                         </div>
-                        <div className="text-emerald-600 font-bold">Active</div>
+                        <div className="text-emerald-600 font-medium">Active</div>
                       </div>
                       
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-semibold text-stone-800">HubSpot</div>
+                          <div className="font-normal text-stone-800">HubSpot</div>
                           <div className="text-sm text-stone-600">Marketing integration</div>
                         </div>
-                        <div className="text-emerald-600 font-bold">Active</div>
+                        <div className="text-emerald-600 font-medium">Active</div>
                       </div>
                       
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-semibold text-stone-800">Slack</div>
+                          <div className="font-normal text-stone-800">Slack</div>
                           <div className="text-sm text-stone-600">Communication integration</div>
                         </div>
-                        <div className="text-red-600 font-bold">Inactive</div>
+                        <div className="text-red-600 font-medium">Inactive</div>
                       </div>
                     </div>
                   </div>
@@ -1086,14 +1086,14 @@ export default function ReceptionistAIProfile() {
                 
                 <div className="space-y-6">
                   <div className="bg-gradient-to-br from-gray-50 to-gray-50 rounded-2xl p-6 border border-gray-200">
-                    <h4 className="font-bold text-black mb-4 flex items-center">
+                    <h4 className="font-medium text-black mb-4 flex items-center">
                       <Settings className="w-5 h-5 mr-2" />
                       Integration Settings
                     </h4>
                     
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-stone-700 mb-2">Sync Frequency</label>
+                        <label className="block text-sm font-normal text-stone-700 mb-2">Sync Frequency</label>
                         <select
                           value="real-time"
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gray-500 bg-white"
@@ -1106,7 +1106,7 @@ export default function ReceptionistAIProfile() {
                       </div>
                       
                       <div>
-                        <label className="block text-sm font-semibold text-stone-700 mb-2">Data Retention</label>
+                        <label className="block text-sm font-normal text-stone-700 mb-2">Data Retention</label>
                         <select
                           value="30-days"
                           className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:border-gray-500 bg-white"
@@ -1140,7 +1140,7 @@ export default function ReceptionistAIProfile() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 px-4 py-3 rounded-xl font-semibold transition-all flex items-center justify-center space-x-2 ${
+                className={`flex-1 px-4 py-3 rounded-xl font-normal transition-all flex items-center justify-center space-x-2 ${
                   activeTab === tab.id
                     ? `${tab.color} text-white shadow-lg`
                     : 'bg-white text-stone-700 hover:bg-stone-100'

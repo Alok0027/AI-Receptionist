@@ -48,19 +48,19 @@ const StaffAttendanceWidget = ({ data }) => {
       {/* Summary Cards */}
       <div className="grid grid-cols-4 gap-3 mb-4">
         <div className="text-center p-2 bg-green-50 rounded-lg">
-          <p className="text-lg font-semibold text-green-600">{data.summary.checkedIn}</p>
+          <p className="text-lg font-normal text-green-600">{data.summary.checkedIn}</p>
           <p className="text-xs text-stone-500">Present</p>
         </div>
         <div className="text-center p-2 bg-blue-50 rounded-lg">
-          <p className="text-lg font-semibold text-blue-600">{data.summary.onBreak}</p>
+          <p className="text-lg font-normal text-blue-600">{data.summary.onBreak}</p>
           <p className="text-xs text-stone-500">On Break</p>
         </div>
         <div className="text-center p-2 bg-red-50 rounded-lg">
-          <p className="text-lg font-semibold text-red-600">{data.summary.absent}</p>
+          <p className="text-lg font-normal text-red-600">{data.summary.absent}</p>
           <p className="text-xs text-stone-500">Absent</p>
         </div>
         <div className="text-center p-2 bg-orange-50 rounded-lg">
-          <p className="text-lg font-semibold text-orange-600">{data.summary.late}</p>
+          <p className="text-lg font-normal text-orange-600">{data.summary.late}</p>
           <p className="text-xs text-stone-500">Late</p>
         </div>
       </div>

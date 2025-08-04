@@ -218,7 +218,7 @@ const CallManagementSystem = () => {
              <PhoneMissed className="w-5 h-5 text-white" />}
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900 text-lg">{call.caller}</h3>
+            <h3 className="font-normal text-gray-900 text-lg">{call.caller}</h3>
             <p className="text-sm text-gray-500 flex items-center space-x-2">
               <Phone className="w-3 h-3" />
               <span>{call.phone}</span>
@@ -311,7 +311,7 @@ const CallManagementSystem = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Call Management</h1>
+            <h1 className="text-3xl font-medium text-gray-900 mb-2">Call Management</h1>
             <p className="text-gray-600">Comprehensive AI-powered call management system</p>
           </div>
           <div className="flex items-center space-x-4">
@@ -374,7 +374,7 @@ const CallManagementSystem = () => {
           <div className="space-y-6">
             {/* Live Monitoring */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <h3 className="text-lg font-normal text-gray-900 mb-4 flex items-center">
                 <Headphones className="w-5 h-5 mr-2 text-gray-700" />
                 Live Monitoring
               </h3>
@@ -405,7 +405,7 @@ const CallManagementSystem = () => {
 
             {/* Client Distribution */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <h3 className="text-lg font-normal text-gray-900 mb-4 flex items-center">
                 <PieChart className="w-5 h-5 mr-2 text-gray-700" />
                 Client Distribution
               </h3>
@@ -421,7 +421,7 @@ const CallManagementSystem = () => {
                         <span className="text-sm font-medium text-gray-700">{item.name}</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <span className="font-semibold text-gray-900">{item.value}</span>
+                        <span className="font-normal text-gray-900">{item.value}</span>
                         <div className="flex items-center">
                           {item.trend > 0 ? (
                             <TrendingUp className="w-3 h-3 text-green-500" />
@@ -451,7 +451,7 @@ const CallManagementSystem = () => {
 
             {/* Call Resolution Stats */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <h3 className="text-lg font-normal text-gray-900 mb-4 flex items-center">
                 <BarChart3 className="w-5 h-5 mr-2 text-gray-700" />
                 Resolution Analytics
               </h3>
@@ -508,7 +508,7 @@ const CallManagementSystem = () => {
 
             {/* Quick Actions */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+              <h3 className="text-lg font-normal text-gray-900 mb-4">Quick Actions</h3>
               <div className="grid grid-cols-2 gap-3">
                 <button 
                   onClick={() => selectedCall && alert(`Spam block activated for ${selectedCall.caller}`)}
@@ -554,7 +554,7 @@ const CallManagementSystem = () => {
                        <PhoneMissed className="w-6 h-6 text-white" />}
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900">{selectedCall.caller}</h2>
+                      <h2 className="text-2xl font-medium text-gray-900">{selectedCall.caller}</h2>
                       <p className="text-gray-600">{selectedCall.phone} • {selectedCall.email}</p>
                     </div>
                   </div>
@@ -568,94 +568,191 @@ const CallManagementSystem = () => {
               </div>
 
               <div className="p-6 space-y-6">
-                {/* Call Details Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Duration</p>
-                    <p className="font-semibold text-lg">{selectedCall.duration}</p>
+                {/* Call Information Header */}
+                <div className="border-b border-gray-200 pb-6">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">PHONE</p>
+                      <p className="font-medium text-gray-900">{selectedCall.phone}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">EMAIL</p>
+                      <p className="font-medium text-gray-900">{selectedCall.email}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">STATUS</p>
+                      <div className="flex items-center space-x-2">
+                        <div className={`w-2 h-2 rounded-full ${
+                          selectedCall.status === 'completed' ? 'bg-green-500' : 
+                          selectedCall.status === 'missed' ? 'bg-red-500' : 'bg-yellow-500'
+                        }`}></div>
+                        <span className="font-medium text-gray-900 capitalize">{selectedCall.status === 'completed' ? 'New Lead' : selectedCall.status}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">PRIORITY</p>
+                      <p className="font-medium text-gray-900 capitalize">{selectedCall.priority}</p>
+                    </div>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Status</p>
-                    <p className="font-semibold text-lg capitalize">{selectedCall.status}</p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">Priority</p>
-                    <p className="font-semibold text-lg capitalize">{selectedCall.priority}</p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-500 mb-1">AI Confidence</p>
-                    <p className="font-semibold text-lg">{selectedCall.aiConfidence || 'N/A'}%</p>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">RESOLVED BY</p>
+                      <p className="font-medium text-gray-900">{selectedCall.resolvedBy || 'Pending'}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">SUMMARY SENT TO</p>
+                      <p className="font-medium text-gray-900">{selectedCall.transferredTo || 'Not transferred'}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">DISPOSITION</p>
+                      <p className="font-medium text-gray-900 capitalize">{selectedCall.disposition}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">CLIENT TYPE</p>
+                      <div className="flex items-center space-x-2">
+                        <span className="font-medium text-gray-900 capitalize">{selectedCall.clientType}</span>
+                        <User className="w-4 h-4 text-gray-400" />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* AI Transcript */}
-                {selectedCall.transcript && (
-                  <div className="bg-white p-4 rounded-lg border border-gray-200">
-                    <h4 className="font-semibold text-gray-800 mb-2">AI Transcript</h4>
-                    <p className="text-sm text-gray-600 whitespace-pre-wrap">{selectedCall.transcript}</p>
-                  </div>
-                )}
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3">
+                  <button className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    <PhoneCall className="w-4 h-4" />
+                    <span>Request a call back</span>
+                  </button>
+                  <button className="flex items-center space-x-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                    <Upload className="w-4 h-4" />
+                    <span>Add to direct mailing list</span>
+                  </button>
+                  <button className="flex items-center space-x-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                    <Forward className="w-4 h-4" />
+                    <span>Send call to voicemail</span>
+                  </button>
+                  <button className="flex items-center space-x-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                    <Star className="w-4 h-4" />
+                    <span>Mark as a star</span>
+                  </button>
+                  <button className="flex items-center space-x-2 bg-red-100 text-red-700 px-4 py-2 rounded-lg hover:bg-red-200 transition-colors">
+                    <Ban className="w-4 h-4" />
+                    <span>Block caller</span>
+                  </button>
+                  <button className="flex items-center space-x-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                    <Download className="w-4 h-4" />
+                    <span>Download</span>
+                  </button>
+                </div>
 
-                {/* Advanced Audio Player */}
+                {/* Call Recording Section */}
                 {selectedCall.recordingUrl && (
-                  <div className="bg-gradient-to-r from-gray-900 to-gray-700 rounded-xl p-6 text-white">
-                    <h3 className="text-lg font-semibold mb-4 flex items-center">
-                      <Volume2 className="w-5 h-5 mr-2" />
-                      Call Recording
-                    </h3>
-                    
-                    {/* Waveform Visualization */}
-                    <div className="mb-4">
-                      <div className="flex items-center space-x-1 h-16 bg-black bg-opacity-30 rounded-lg p-2">
-                        {Array.from({ length: 50 }).map((_, i) => (
-                          <div 
-                            key={i} 
-                            className={`flex-1 rounded-full ${
-                              i < (currentTime / 240) * 50 ? 'bg-gray-400' : 'bg-gray-600'
-                            }`}
-                            style={{ height: `${Math.random() * 80 + 20}%` }}
-                          ></div>
-                        ))}
-                      </div>
+                  <div className="bg-white border border-gray-200 rounded-lg">
+                    <div className="px-6 py-4 border-b border-gray-200">
+                      <h3 className="text-lg font-normal text-gray-900 flex items-center">
+                        <Headphones className="w-5 h-5 mr-2 text-gray-600" />
+                        Call Recording
+                      </h3>
                     </div>
-
-                    {/* Audio Controls */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
+                    <div className="p-6">
+                      {/* Audio Player Controls */}
+                      <div className="flex items-center space-x-4 mb-4">
                         <button 
                           onClick={() => setIsPlaying(!isPlaying)}
-                          className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full p-3 transition-all"
+                          className="flex items-center justify-center w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors"
                         >
-                          {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                          {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
                         </button>
-                        <div className="text-sm">
-                          <span>{Math.floor(currentTime / 60)}:{(currentTime % 60).toString().padStart(2, '0')}</span>
-                          <span className="mx-2">/</span>
-                          <span>4:00</span>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between text-sm text-gray-500 mb-1">
+                            <span>{Math.floor(currentTime / 60)}:{(currentTime % 60).toString().padStart(2, '0')}</span>
+                            <span>4:32</span>
+                          </div>
+                          {/* Progress Bar */}
+                          <div className="w-full bg-gray-200 rounded-full h-2 cursor-pointer">
+                            <div 
+                              className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                              style={{ width: `${(currentTime / 272) * 100}%` }}
+                            ></div>
+                          </div>
                         </div>
-                        <button 
-                          onClick={() => setPlaybackSpeed(playbackSpeed === 1 ? 1.5 : playbackSpeed === 1.5 ? 2 : 1)}
-                          className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg px-3 py-1 text-sm transition-all"
-                        >
-                          {playbackSpeed}x
-                        </button>
+                        <div className="flex items-center space-x-2">
+                          <button 
+                            onClick={() => setPlaybackSpeed(playbackSpeed === 1 ? 1.5 : playbackSpeed === 1.5 ? 2 : 1)}
+                            className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+                          >
+                            {playbackSpeed}x
+                          </button>
+                          <button onClick={() => setIsMuted(!isMuted)} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                            {isMuted ? <VolumeX className="w-4 h-4 text-gray-600" /> : <Volume2 className="w-4 h-4 text-gray-600" />}
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <button onClick={() => setIsMuted(!isMuted)}>
-                          {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                        </button>
-                        <input 
-                          type="range" 
-                          min="0" 
-                          max="100" 
-                          value={isMuted ? 0 : volume} 
-                          onChange={(e) => setVolume(e.target.value)}
-                          className="w-20 accent-green-400"
-                        />
+                      
+                      {/* Waveform Visualization */}
+                      <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                        <div className="flex items-end justify-center space-x-1 h-16">
+                          {Array.from({ length: 60 }).map((_, i) => (
+                            <div 
+                              key={i} 
+                              className={`w-1 rounded-full transition-colors ${
+                                i < (currentTime / 272) * 60 ? 'bg-blue-600' : 'bg-gray-300'
+                              }`}
+                              style={{ height: `${Math.random() * 80 + 20}%` }}
+                            ></div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 )}
+
+                {/* Call Summary and Transcript */}
+                <div className="bg-white border border-gray-200 rounded-lg">
+                  <div className="px-6 py-4 border-b border-gray-200">
+                    <h3 className="text-lg font-normal text-gray-900 flex items-center">
+                      <FileText className="w-5 h-5 mr-2 text-gray-600" />
+                      Call Summary
+                    </h3>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-2">Summary</h4>
+                      <p className="text-gray-700 leading-relaxed">{selectedCall.summary}</p>
+                    </div>
+                    
+                    {selectedCall.transcript && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-2 flex items-center">
+                          <MessageSquare className="w-4 h-4 mr-2" />
+                          Full Transcript
+                        </h4>
+                        <div className="bg-gray-50 rounded-lg p-4">
+                          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{selectedCall.transcript}</p>
+                        </div>
+                        <div className="mt-3 text-xs text-gray-500">
+                          This recording and transcript will expire in 89 days
+                        </div>
+                      </div>
+                    )}
+                    
+                    {selectedCall.keywords && selectedCall.keywords.length > 0 && (
+                      <div>
+                        <h4 className="font-medium text-gray-900 mb-2">Keywords</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedCall.keywords.map((keyword, index) => (
+                            <span key={index} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                              {keyword}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+
 
                 {/* Call Actions */}
                 <div className="flex flex-wrap gap-3">
@@ -683,7 +780,7 @@ const CallManagementSystem = () => {
                 {/* Call Notes */}
                 {selectedCall.notes && (
                   <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-yellow-800 mb-2 flex items-center">
+                    <h4 className="font-normal text-yellow-800 mb-2 flex items-center">
                       <FileText className="w-4 h-4 mr-2" />
                       Call Notes
                     </h4>

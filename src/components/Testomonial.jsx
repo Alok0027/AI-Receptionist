@@ -39,7 +39,7 @@ const Testomonial = () => {
                         <div className="flex items-center gap-4">
                             <img src={t2} className="w-12 h-12 rounded-lg object-cover" />
                             <div>
-                                <p className="font-semibold">Brendan</p>
+                                <p className="font-normal">Brendan</p>
                                 <p className="text-sm text-gray-500">Marketing Director at StratIQ</p>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ const Testomonial = () => {
                         <div className="flex items-center gap-4">
                             <img src={t1} className="w-12 h-12 rounded-lg object-cover" />
                             <div>
-                                <p className="font-semibold">Lena M</p>
+                                <p className="font-normal">Lena M</p>
                                 <p className="text-sm text-gray-500">Manager at NovaTech</p>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ const Testomonial = () => {
                         <div className="flex items-center gap-4">
                             <img src={t3} className="w-12 h-12 rounded-lg object-cover" />
                             <div>
-                                <p className="font-semibold">Eli R</p>
+                                <p className="font-normal">Eli R</p>
                                 <p className="text-sm text-gray-500">COO at GridFrame</p>
                             </div>
                         </div>

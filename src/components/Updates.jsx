@@ -54,7 +54,7 @@ const Updates = () => {
     <div className="bg-white py-20 mt-5">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-base font-semibold text-gray-600 tracking-wide uppercase">Our Services</h2>
+          <h2 className="text-base font-normal text-gray-600 tracking-wide uppercase">Our Services</h2>
           <p className="mt-2 text-3xl font-medium text-gray-900 tracking-tight sm:text-4xl">
             Fresh Takes & Updates
           </p>
@@ -117,7 +117,7 @@ const Updates = () => {
                     </div>
                   </div>
                   <a href="#" className="block mt-2">
-                    <p className="text-xl font-semibold text-gray-900">{update.title}</p>
+                    <p className="text-xl font-normal text-gray-900">{update.title}</p>
                     <p className="mt-3 text-base text-gray-500">{update.description}</p>
                   </a>
                 </div>

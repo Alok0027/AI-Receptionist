@@ -14,7 +14,7 @@ const Lines = () => {
             
           />
           <div className="ml-4 text-left">
-            <p className="text-lg font-semibold text-gray-900">Alok</p>
+            <p className="text-lg font-normal text-gray-900">Alok</p>
             <p className="text-base font-medium text-gray-500">Designer of KAIRO AI</p>
           </div>
         </div>

@@ -61,19 +61,19 @@ const TaskCompletionWidget = ({ data }) => {
       {/* Task Summary */}
       <div className="grid grid-cols-4 gap-3 mb-4">
         <div className="text-center p-2 bg-green-50 rounded-lg">
-          <p className="text-lg font-semibold text-green-600">{data.summary.completed}</p>
+          <p className="text-lg font-normal text-green-600">{data.summary.completed}</p>
           <p className="text-xs text-stone-500">Completed</p>
         </div>
         <div className="text-center p-2 bg-yellow-50 rounded-lg">
-          <p className="text-lg font-semibold text-yellow-600">{data.summary.pending}</p>
+          <p className="text-lg font-normal text-yellow-600">{data.summary.pending}</p>
           <p className="text-xs text-stone-500">Pending</p>
         </div>
         <div className="text-center p-2 bg-red-50 rounded-lg">
-          <p className="text-lg font-semibold text-red-600">{data.summary.overdue}</p>
+          <p className="text-lg font-normal text-red-600">{data.summary.overdue}</p>
           <p className="text-xs text-stone-500">Overdue</p>
         </div>
         <div className="text-center p-2 bg-blue-50 rounded-lg">
-          <p className="text-lg font-semibold text-blue-600">{data.summary.totalToday}</p>
+          <p className="text-lg font-normal text-blue-600">{data.summary.totalToday}</p>
           <p className="text-xs text-stone-500">Total</p>
         </div>
       </div>

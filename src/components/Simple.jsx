@@ -26,7 +26,7 @@ const Simple = () => {
                                 </div>
                                 
                             </div>
-                            <h3 className="text-xl font-semibold mt-3">Workflow Assessment</h3>
+                            <h3 className="text-xl font-normal mt-3">Workflow Assessment</h3>
                             <p className="text-gray-600 mb-8 border-b border-gray-200 pb-6">
                                 We begin by examining your existing workflows to identify where AI can deliver the greatest impact.
                             </p>
@@ -54,7 +54,7 @@ const Simple = () => {
                                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
                                     </div>
-                                    <h3 className="text-xl font-semibold">Deploy with Confidence</h3>
+                                    <h3 className="text-xl font-normal">Deploy with Confidence</h3>
                                 </div>
                                 <p className="text-gray-600">
                                     Our team develops custom AI systems built around your goals, ensuring safe and reliable deployment.
@@ -82,7 +82,7 @@ const Simple = () => {
                                             <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                         </svg>
                                     </div>
-                                    <h3 className="text-xl font-semibold">Ongoing Support & Optimization</h3>
+                                    <h3 className="text-xl font-normal">Ongoing Support & Optimization</h3>
                                 </div>
                                 <p className="text-gray-600">
                                     After deployment, we provide support and refine your AI systems to keep them performing at their best.

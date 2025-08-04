@@ -636,7 +636,7 @@ const IntegrationsPage = () => {
                   {selectedIntegration.icon}
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Connect {selectedIntegration.name}</h2>
+                  <h2 className="text-xl font-normal text-gray-900">Connect {selectedIntegration.name}</h2>
                   <p className="text-sm text-gray-500">{selectedIntegration.description}</p>
                 </div>
               </div>
@@ -822,7 +822,7 @@ const IntegrationsPage = () => {
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <h3 className="font-semibold text-gray-900">{integration.name}</h3>
+                <h3 className="font-normal text-gray-900">{integration.name}</h3>
                 {integration.popular && (
                   <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">
                     Popular
@@ -908,7 +908,7 @@ const IntegrationsPage = () => {
           <div className="py-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Integrations</h1>
+                <h1 className="text-2xl font-medium text-gray-900">Integrations</h1>
                 <p className="text-gray-600 mt-1">Connect your favorite tools and automate your workflow</p>
               </div>
               

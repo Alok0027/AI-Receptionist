@@ -77,7 +77,7 @@ const Why = () => {
                 className="h-full w-full object-cover rounded-2xl"
               />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">Real-Time Analytics</h3>
+            <h3 className="text-2xl font-medium text-gray-900">Real-Time Analytics</h3>
             <p className="mt-4 text-gray-500">
               Stay ahead with accurate, real-time performance tracking.
             </p>
@@ -87,7 +87,7 @@ const Why = () => {
             <div className="h-48 mb-6 flex items-center justify-center">
               <img src={t2} alt="AI-Driven Growth" className="h-full w-full object-cover rounded-2xl" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">AI-Driven Growth</h3>
+            <h3 className="text-2xl font-medium text-gray-900">AI-Driven Growth</h3>
             <p className="mt-4 text-gray-500">
               Make smarter moves with accurate, real-time business insights.
             </p>
@@ -97,7 +97,7 @@ const Why = () => {
             <div className="h-48 mb-6 flex items-center justify-center">
               <img src={t3} alt="Sync in real time" className="h-full w-full object-cover rounded-2xl" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900">Sync in real time</h3>
+            <h3 className="text-2xl font-medium text-gray-900">Sync in real time</h3>
             <p className="mt-4 text-gray-500">
               connect with your team instantly to track progress and updates
             </p>

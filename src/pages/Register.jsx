@@ -112,7 +112,7 @@ const Register = () => {
             <div className="max-w-4xl mx-auto p-8">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-black mb-4">Join Kairo</h1>
+                    <h1 className="text-4xl font-medium text-black mb-4">Join Kairo</h1>
                     <p className="text-lg text-stone-600">Set up your intelligent automation assistant in 3 simple steps</p>
                 </div>
                 
@@ -122,7 +122,7 @@ const Register = () => {
                         <div className={`flex-1 h-2 rounded-l-full ${
                             currentStep >= 1 ? 'bg-black' : 'bg-stone-300'
                         }`} />
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-normal ${
                             currentStep >= 1 ? 'bg-black text-white' : 'bg-stone-300 text-stone-600'
                         }`}>1</div>
                     </div>
@@ -130,7 +130,7 @@ const Register = () => {
                         <div className={`flex-1 h-2 ${
                             currentStep >= 2 ? 'bg-black' : 'bg-stone-300'
                         }`} />
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-normal ${
                             currentStep >= 2 ? 'bg-black text-white' : 'bg-stone-300 text-stone-600'
                         }`}>2</div>
                     </div>
@@ -138,7 +138,7 @@ const Register = () => {
                         <div className={`flex-1 h-2 rounded-r-full ${
                             currentStep >= 3 ? 'bg-black' : 'bg-stone-300'
                         }`} />
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-normal ${
                             currentStep >= 3 ? 'bg-black text-white' : 'bg-stone-300 text-stone-600'
                         }`}>3</div>
                     </div>
@@ -146,9 +146,9 @@ const Register = () => {
                 
                 {/* Step Labels */}
                 <div className="flex justify-between mb-8 text-sm text-stone-600">
-                    <span className={currentStep === 1 ? 'text-black font-semibold' : ''}>Basic Information</span>
-                    <span className={currentStep === 2 ? 'text-black font-semibold' : ''}>Professional Verification</span>
-                    <span className={currentStep === 3 ? 'text-black font-semibold' : ''}>Service & Pricing</span>
+                    <span className={currentStep === 1 ? 'text-black font-normal' : ''}>Basic Information</span>
+                    <span className={currentStep === 2 ? 'text-black font-normal' : ''}>Professional Verification</span>
+                    <span className={currentStep === 3 ? 'text-black font-normal' : ''}>Service & Pricing</span>
                 </div>
                 
                 <div className="bg-white rounded-lg shadow-lg p-8">
@@ -156,7 +156,7 @@ const Register = () => {
                     {currentStep === 1 && (
                         <div className="space-y-6">
                             <div className="text-center mb-8">
-                                <h2 className="text-2xl font-bold text-black mb-2">Tell us about yourself</h2>
+                                <h2 className="text-2xl font-medium text-black mb-2">Tell us about yourself</h2>
                                 <p className="text-stone-600">We need some basic information to get started</p>
                             </div>
                             
@@ -313,7 +313,7 @@ const Register = () => {
                     {currentStep === 2 && (
                         <div className="space-y-6">
                             <div className="text-center mb-8">
-                                <h2 className="text-2xl font-bold text-black mb-2">Professional Verification</h2>
+                                <h2 className="text-2xl font-medium text-black mb-2">Professional Verification</h2>
                                 <p className="text-stone-600">Help us understand your business requirements</p>
                             </div>
                             
@@ -379,7 +379,7 @@ const Register = () => {
                             </div>
                             
                             <div className="bg-stone-50 p-6 rounded-lg">
-                                <h3 className="text-lg font-semibold text-black mb-4">Business Requirements Assessment</h3>
+                                <h3 className="text-lg font-normal text-black mb-4">Business Requirements Assessment</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-sm font-medium text-black mb-2">Expected Monthly Calls *</label>
@@ -473,18 +473,18 @@ const Register = () => {
                     {currentStep === 3 && (
                         <div className="space-y-6">
                             <div className="text-center mb-8">
-                                <h2 className="text-2xl font-bold text-black mb-2">Service Configuration & Pricing</h2>
+                                <h2 className="text-2xl font-medium text-black mb-2">Service Configuration & Pricing</h2>
                                 <p className="text-stone-600">Review your customized plan based on your requirements</p>
                             </div>
                             
                             {/* Pricing Breakdown */}
                             <div className="bg-stone-50 p-6 rounded-lg">
-                                <h3 className="text-lg font-semibold text-black mb-4">Your Customized Plan</h3>
+                                <h3 className="text-lg font-normal text-black mb-4">Your Customized Plan</h3>
                                 
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center py-2 border-b border-stone-200">
                                         <span className="text-stone-700">Base Package</span>
-                                        <span className="font-semibold">${pricing.basePrice}/month</span>
+                                        <span className="font-normal">${pricing.basePrice}/month</span>
                                     </div>
                                     
                                     {pricing.additionalCosts > 0 && (
@@ -517,14 +517,14 @@ const Register = () => {
                                         </div>
                                     )}
                                     
-                                    <div className="flex justify-between items-center py-3 border-t-2 border-black font-bold text-lg">
+                                    <div className="flex justify-between items-center py-3 border-t-2 border-black font-medium text-lg">
                                         <span>Total Monthly Cost</span>
                                         <span>${pricing.total}/month</span>
                                     </div>
                                 </div>
                                 
                                 <div className="mt-6 p-4 bg-white rounded border">
-                                    <h4 className="font-semibold text-black mb-2">What's Included:</h4>
+                                    <h4 className="font-normal text-black mb-2">What's Included:</h4>
                                     <ul className="text-sm text-stone-700 space-y-1">
                                         <li>• 24/7 AI-powered call handling</li>
                                         <li>• Advanced conversation intelligence</li>
@@ -584,7 +584,7 @@ const Register = () => {
                                 </button>
                             ) : (
                                 <button 
-                                    className="px-8 py-3 bg-black text-white rounded-lg hover:bg-stone-800 transition-colors font-semibold"
+                                    className="px-8 py-3 bg-black text-white rounded-lg hover:bg-stone-800 transition-colors font-normal"
                                 >
                                     Start Free Trial - ${pricing.total}/month
                                 </button>

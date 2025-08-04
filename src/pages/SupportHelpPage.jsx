@@ -256,7 +256,7 @@ const SupportHelpPage = () => {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-10 rounded-2xl mb-6">
               <HelpCircle className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-medium text-white mb-4">
               How can we help you?
             </h1>
             <p className="text-xl text-stone-300 mb-8 max-w-2xl mx-auto">
@@ -295,7 +295,7 @@ const SupportHelpPage = () => {
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   )}
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">{action.title}</h3>
+                <h3 className="font-normal text-gray-900 mb-2">{action.title}</h3>
                 <p className="text-sm text-gray-600 mb-4">{action.description}</p>
                 <button className="w-full bg-stone-900 text-white py-2 px-4 rounded-lg hover:bg-stone-800 transition-colors font-medium">
                   {action.action}
@@ -313,7 +313,7 @@ const SupportHelpPage = () => {
             {/* Help Categories */}
             <section>
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">Browse by Category</h2>
+                <h2 className="text-2xl font-medium text-gray-900">Browse by Category</h2>
                 <button className="text-stone-600 hover:text-stone-900 flex items-center space-x-1">
                   <span>View All</span>
                   <ChevronRight className="w-4 h-4" />
@@ -347,7 +347,7 @@ const SupportHelpPage = () => {
                           {category.articles} articles
                         </span>
                       </div>
-                      <h3 className={`font-semibold mb-2 ${
+                      <h3 className={`font-normal mb-2 ${
                         selectedCategory === category.id ? 'text-white' : 'text-gray-900'
                       }`}>
                         {category.title}
@@ -366,7 +366,7 @@ const SupportHelpPage = () => {
             {/* Featured Articles */}
             <section>
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">Featured Articles</h2>
+                <h2 className="text-2xl font-medium text-gray-900">Featured Articles</h2>
                 <button className="text-stone-600 hover:text-stone-900 flex items-center space-x-1">
                   <span>View All</span>
                   <ChevronRight className="w-4 h-4" />
@@ -392,7 +392,7 @@ const SupportHelpPage = () => {
                             </span>
                           )}
                         </div>
-                        <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-stone-900">
+                        <h3 className="font-normal text-gray-900 mb-2 group-hover:text-stone-900">
                           {article.title}
                         </h3>
                         <p className="text-gray-600 mb-3">{article.description}</p>
@@ -411,7 +411,7 @@ const SupportHelpPage = () => {
 
             {/* FAQ Section */}
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+              <h2 className="text-2xl font-medium text-gray-900 mb-8">Frequently Asked Questions</h2>
               
               <div className="space-y-4">
                 {filteredFAQs.map((faq, index) => (
@@ -421,7 +421,7 @@ const SupportHelpPage = () => {
                       className="w-full p-6 text-left hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                        <h3 className="font-normal text-gray-900 pr-4">{faq.question}</h3>
                         <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${
                           expandedFAQ === index ? 'rotate-180' : ''
                         }`} />
@@ -448,7 +448,7 @@ const SupportHelpPage = () => {
                 <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
                   <Activity className="w-4 h-4 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">System Status</h3>
+                <h3 className="font-normal text-gray-900">System Status</h3>
               </div>
               
               <div className="space-y-3">
@@ -483,7 +483,7 @@ const SupportHelpPage = () => {
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                   <Video className="w-4 h-4 text-blue-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">Video Tutorials</h3>
+                <h3 className="font-normal text-gray-900">Video Tutorials</h3>
               </div>
               
               <div className="space-y-4">
@@ -517,7 +517,7 @@ const SupportHelpPage = () => {
                 <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Headphones className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-semibold mb-2">Need Personal Help?</h3>
+                <h3 className="font-normal mb-2">Need Personal Help?</h3>
                 <p className="text-stone-300 text-sm mb-4">
                   Our support team is here to help you succeed
                 </p>
@@ -529,7 +529,7 @@ const SupportHelpPage = () => {
 
             {/* Resources */}
             <div className="bg-white rounded-2xl p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Additional Resources</h3>
+              <h3 className="font-normal text-gray-900 mb-4">Additional Resources</h3>
               
               <div className="space-y-3">
                 <a href="#" className="flex items-center justify-between py-2 text-gray-600 hover:text-stone-900 transition-colors">

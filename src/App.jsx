@@ -16,6 +16,17 @@ import Profile from './pages/Profile';
 import SoftwareLayout from './components/SoftwareLayout';
 import Contact from './components/Contact';
 import UpdatesPage from './pages/Updates';
+import AboutUs from './pages/AboutUs';
+import Careers from './pages/Careers';
+import RequestDemo from './pages/RequestDemo';
+import ApiDocs from './pages/ApiDocs';
+import Blog from './pages/Blog';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
+import Features from './components/Features';
+import Pricing from './components/Pricing';
+import Team from './components/Team';
 
 function AppContent() {
   const location = useLocation();
@@ -30,6 +41,18 @@ function AppContent() {
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/updates" element={<UpdatesPage />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/our-team" element={<Team />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/request-demo" element={<RequestDemo />} />
+        <Route path="/api-docs" element={<ApiDocs />} />
+        <Route path="/help-center" element={<SupportHelpPage />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route
           path="/dashboard/*"
           element={

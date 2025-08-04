@@ -38,7 +38,7 @@ const Result = () => {
                         </div>
                         
                         <div>
-                            <h2 className="text-xl font-semibold mb-2">MedixCare — AI Triage Assistant for Healthcare</h2>
+                            <h2 className="text-xl font-normal mb-2">MedixCare — AI Triage Assistant for Healthcare</h2>
                             <p>We built a custom AI triage assistant that evaluates symptoms and routes patients to the appropriate care level.</p>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ const Result = () => {
                         </div>
 
                         <div>
-                            <h2 className="text-xl font-semibold mb-2">Project 2: Fraud Detection</h2>
+                            <h2 className="text-xl font-normal mb-2">Project 2: Fraud Detection</h2>
                             <p>AI model that detects anomalies in transaction data to reduce fraud.</p>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ const Result = () => {
                             <img src={result3} alt="r3" className="w-[35rem] h-[28rem] object-cover rounded-xl mb-4 " />
                         </div>
                         <div>
-                            <h2 className="text-xl font-semibold mb-2">Project 3: Medical Image Analysis</h2>
+                            <h2 className="text-xl font-normal mb-2">Project 3: Medical Image Analysis</h2>
                             <p>Detects diseases in MRI scans using deep learning (CNNs).</p>
                         </div>
                     </div>

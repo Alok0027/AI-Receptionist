@@ -16,7 +16,7 @@ const StatCard = ({ title, value, subtitle, icon: Icon, trend, trendDirection })
               <ArrowDown className="w-4 h-4 text-red-600 mr-1" />
             ) : null}
             <span
-              className={`text-sm font-semibold ${
+              className={`text-sm font-normal ${
                 trendDirection === 'up'
                   ? 'text-stone-600'
                   : trendDirection === 'down'

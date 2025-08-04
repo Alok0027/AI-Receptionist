@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
-import Footer from './Footer';
 
 const SoftwareLayout = ({ children }) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -18,7 +17,6 @@ const SoftwareLayout = ({ children }) => {
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-stone-50 p-6 space-y-6">
           {children}
         </main>
-        <Footer />
       </div>
     </div>
   );

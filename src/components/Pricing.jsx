@@ -2,20 +2,21 @@ import tick from "../assets/tick.svg";
 
 const Pricing = () => {
     return(
-        <section id="pricing" className="max-w-7xl mx-auto my-8 p-6 bg-white rounded-lg">
-            <div className=" text-center text-4xl font-medium text-black">
-                Simple Price For All
-            </div>
-            <div className="text-center text-black mt-4 mb-8 text-lg">
-                Flexible pricing plans that fit your budget & scale with needs.
-            </div>
+        <div className="min-h-screen bg-stone-50">
+            <section id="pricing" className="max-w-7xl mx-auto py-16 px-6">
+                <div className="text-center text-4xl font-normal text-stone-900 mb-4">
+                    Simple Price For All
+                </div>
+                <div className="text-center text-stone-600 mt-4 mb-8 text-lg">
+                    Flexible pricing plans that fit your budget & scale with needs.
+                </div>
             <div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="p-6 border rounded-lg shadow hover:shadow-md transition duration-300 h-[25rem] flex flex-col justify-between">
+                    <div className="p-6 border border-stone-200 rounded-lg shadow-sm hover:shadow-md transition duration-300 h-[25rem] flex flex-col justify-between bg-white">
                         <div>
-                            <h3 className="text-lg font-normal mb-2">Starter</h3>
-                            <p className="text-black mb-4 text-4xl text-medium">$800<span className="text-base font-light">/month</span></p>
-                            <p className="text-base font-light mt-4">Ideal for businesses ready to explore AI and intelligent automation</p>
+                            <h3 className="text-lg font-normal mb-2 text-stone-900">Starter</h3>
+                            <p className="text-stone-900 mb-4 text-4xl text-medium">$800<span className="text-base font-light text-stone-600">/month</span></p>
+                            <p className="text-base font-light mt-4 text-stone-600">Ideal for businesses ready to explore AI and intelligent automation</p>
                         </div>
                         <button 
         className="
@@ -184,7 +185,8 @@ const Pricing = () => {
 </div>
                 </div>
             </div>
-        </section>
+            </section>
+        </div>
     );
 }
 export default Pricing;

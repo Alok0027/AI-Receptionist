@@ -102,10 +102,10 @@ const Appointment = () => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <main>
-          <h2 className="text-2xl font-bold mb-4">Appointment Scheduling</h2>
+          <h2 className="text-2xl font-medium mb-4">Appointment Scheduling</h2>
 
           <div className="bg-stone-50 p-6 rounded shadow mb-6">
-            <h3 className="text-lg font-semibold mb-4">
+            <h3 className="text-lg font-normal mb-4">
               {editingAppointment ? "Edit Appointment" : "Add New Appointment"}
             </h3>
             <form onSubmit={handleAddAppointment} className="space-y-4">
@@ -176,7 +176,7 @@ const Appointment = () => {
           </div>
 
           <div className="bg-stone-50 p-6 rounded shadow mb-6">
-            <h3 className="text-lg font-semibold mb-4">Appointments</h3>
+            <h3 className="text-lg font-normal mb-4">Appointments</h3>
             {appointments.length === 0 ? (
               <p>No appointments scheduled.</p>
             ) : (
@@ -219,7 +219,7 @@ const Appointment = () => {
           </div>
 
           <div className="bg-stone-50 p-6 rounded shadow mb-6">
-            <h3 className="text-lg font-semibold mb-4">Booking Rules</h3>
+            <h3 className="text-lg font-normal mb-4">Booking Rules</h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium">Available Days (comma-separated)</label>
@@ -262,7 +262,7 @@ const Appointment = () => {
           </div>
 
           <div className="bg-stone-50 p-6 rounded shadow">
-            <h3 className="text-lg font-semibold mb-4">Calendar Integration</h3>
+            <h3 className="text-lg font-normal mb-4">Calendar Integration</h3>
             <button
               onClick={handleCalendarSync}
               className="bg-gray-800 text-stone-50 px-4 py-2 rounded hover:bg-black"

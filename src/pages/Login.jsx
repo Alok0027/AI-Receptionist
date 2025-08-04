@@ -16,7 +16,7 @@ const Login = () => {
                     <div className="max-w-md w-full space-y-8">
                         {/* Welcome Section */}
                         <div className="text-center">
-                            <h2 className="text-3xl font-bold text-black mb-2">Welcome back</h2>
+                            <h2 className="text-3xl font-medium text-black mb-2">Welcome back</h2>
                             <p className="text-stone-600">Sign in to your account to continue automating your workflows</p>
                         </div>
 

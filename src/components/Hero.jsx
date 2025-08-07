@@ -55,7 +55,7 @@ const Hero = () => {
           {showTitle && (
             <h1
               ref={titleRef}
-              className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-4 text-black"
+              className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-4 text-black"
               aria-label={title}
             >
               {title}
@@ -64,7 +64,7 @@ const Hero = () => {
           {showTagline && (
             <p
               ref={taglineRef}
-              className="hero-tagline text-lg sm:text-xl lg:text-2xl text-black max-w-2xl font-medium"
+              className="hero-tagline text-lg sm:text-xl lg:text-2xl text-black max-w-2xl font-normal"
               aria-label={tagline}
             >
               {tagline}

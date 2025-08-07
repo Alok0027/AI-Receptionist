@@ -88,7 +88,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     <Link to="/login">
-                        <button className="bg-black shadow-2xl shadow-black text-white px-6 py-2 rounded-lg text-base hover:shadow-[0_4px_25px_rgba(0,0,0,0.4)] transition-shadow duration-200">
+                        <button className="bg-black text-white px-6 py-2 rounded-lg text-base hover:shadow-[0_4px_25px_rgba(0,0,0,0.4)] transition-shadow duration-200">
                             Login
                         </button>
                     </Link>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import SplineFooterModel from './SplineFooterModel';
+
 import kairologo from '../assets/kairologo.png';
 
 const Footer = () => {
@@ -16,10 +16,7 @@ const Footer = () => {
   };
   return (
     <footer className="relative bg-white border-t border-stone-200 overflow-hidden">
-      {/* Spline Model as full interactive background */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <SplineFooterModel />
-      </div>
+
       
       {/* Footer content overlays Spline */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
@@ -55,9 +52,9 @@ const Footer = () => {
             <div className="min-w-[120px]">
               <h4 className="font-normal text-stone-900 mb-4">About</h4>
               <ul className="space-y-2">
-                <li><Link to="/about-us" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">About Us</Link></li>
-                <li><a href="/#team" onClick={(e) => { e.preventDefault(); handleScrollToSection('team'); }} className="text-stone-600 hover:text-stone-900 text-sm transition-colors cursor-pointer">Our Team</a></li>
-                <li><Link to="/careers" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Careers</Link></li>
+                <li><Link to="/about-us" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">About Us</Link></li>
+                <li><a href="/#team" onClick={(e) => { e.preventDefault(); handleScrollToSection('team'); }} className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Our Team</a></li>
+                <li><Link to="/careers" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Careers</Link></li>
               </ul>
             </div>
 
@@ -65,10 +62,10 @@ const Footer = () => {
             <div className="min-w-[120px]">
               <h4 className="font-normal text-stone-900 mb-4">Product</h4>
               <ul className="space-y-2">
-                <li><a href="/#features" onClick={(e) => { e.preventDefault(); handleScrollToSection('features'); }} className="text-stone-600 hover:text-stone-900 text-sm transition-colors cursor-pointer">Features</a></li>
-                <li><a href="/#pricing" onClick={(e) => { e.preventDefault(); handleScrollToSection('pricing'); }} className="text-stone-600 hover:text-stone-900 text-sm transition-colors cursor-pointer">Pricing</a></li>
-                <li><Link to="/request-demo" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Request a Demo</Link></li>
-                <li><Link to="/api-docs" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">API Docs</Link></li>
+                <li><a href="/#features" onClick={(e) => { e.preventDefault(); handleScrollToSection('features'); }} className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Features</a></li>
+                <li><a href="/#pricing" onClick={(e) => { e.preventDefault(); handleScrollToSection('pricing'); }} className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors cursor-pointer after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Pricing</a></li>
+                <li><Link to="/request-demo" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Request a Demo</Link></li>
+                <li><Link to="/api-docs" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">API Docs</Link></li>
               </ul>
             </div>
 
@@ -76,9 +73,9 @@ const Footer = () => {
             <div className="min-w-[120px]">
               <h4 className="font-normal text-stone-900 mb-4">Support</h4>
               <ul className="space-y-2">
-                <li><Link to="/help-center" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Help Center</Link></li>
-                <li><Link to="/blog" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Blog</Link></li>
-                <li><Link to="/contact" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Contact Us</Link></li>
+                <li><Link to="/help-center" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Help Center</Link></li>
+                <li><Link to="/blog" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Blog</Link></li>
+                <li><Link to="/contact" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link></li>
               </ul>
             </div>
 
@@ -86,9 +83,9 @@ const Footer = () => {
             <div className="min-w-[120px]">
               <h4 className="font-normal text-stone-900 mb-4">Legal</h4>
               <ul className="space-y-2">
-                <li><Link to="/privacy-policy" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms-of-service" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Terms of Service</Link></li>
-                <li><Link to="/cookie-policy" className="text-stone-600 hover:text-stone-900 text-sm transition-colors">Cookie Policy</Link></li>
+                <li><Link to="/privacy-policy" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Terms of Service</Link></li>
+                <li><Link to="/cookie-policy" className="relative pb-1 text-stone-600 hover:text-stone-900 text-sm transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Cookie Policy</Link></li>
               </ul>
             </div>
           </div>
@@ -97,7 +94,7 @@ const Footer = () => {
         <div className="pt-6 border-t border-stone-200">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
             <p className="text-stone-500 text-sm">
-              © 2025 YourReceptionAI. All rights reserved.
+              © 2025 KairoAI. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm text-stone-500">
               <span>Made with care for better customer service</span>

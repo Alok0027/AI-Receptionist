@@ -18,6 +18,7 @@ import {
   XCircle,
   Eye,
   BarChart3,
+  Brain,
   PieChart,
   MapPin,
   Star,
@@ -212,46 +213,38 @@ const Dashboard = () => {
       {activeTab === 'overview' && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <StatCard
-                title="Calls Today"
-                value={dashboardData.calls.received}
-                subtitle={`${dashboardData.calls.answered} answered`}
-                icon={Phone}
-                trend={dashboardData.calls.trend}
-                trendDirection="up"
-              />
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <StatCard
-                title="Payments"
-                value={`₹${dashboardData.payments.received.toLocaleString()}`}
-                subtitle={`₹${dashboardData.payments.pending.toLocaleString()} pending`}
-                icon={DollarSign}
-                trend={dashboardData.payments.trend}
-                trendDirection="up"
-              />
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <StatCard
-                title="Revenue Today"
-                value={`₹${dashboardData.revenue.today.toLocaleString()}`}
-                subtitle={`₹${dashboardData.revenue.month.toLocaleString()} this month`}
-                icon={BarChart3}
-                trend={dashboardData.revenue.growth}
-                trendDirection="up"
-              />
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-              <StatCard
-                title="Active Users"
-                value="1,234"
-                subtitle="+12% from last week"
-                icon={Users}
-                trend="+12%"
-                trendDirection="up"
-              />
-            </motion.div>
+            <StatCard
+              title="Calls Today"
+              value={dashboardData.calls.received}
+              subtitle={`${dashboardData.calls.answered} answered`}
+              icon={Phone}
+              trend={dashboardData.calls.trend}
+              trendDirection="up"
+            />
+            <StatCard
+              title="Payments"
+              value={`₹${dashboardData.payments.received.toLocaleString()}`}
+              subtitle={`₹${dashboardData.payments.pending.toLocaleString()} pending`}
+              icon={DollarSign}
+              trend={dashboardData.payments.trend}
+              trendDirection="up"
+            />
+            <StatCard
+              title="Revenue Today"
+              value={`₹${dashboardData.revenue.today.toLocaleString()}`}
+              subtitle={`₹${dashboardData.revenue.month.toLocaleString()} this month`}
+              icon={BarChart3}
+              trend={dashboardData.revenue.growth}
+              trendDirection="up"
+            />
+            <StatCard
+              title="Active Users"
+              value="1,234"
+              subtitle="+12% from last week"
+              icon={Users}
+              trend="+12%"
+              trendDirection="up"
+            />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -275,6 +268,71 @@ const Dashboard = () => {
                 className="w-full mt-4 py-2 text-stone-900 hover:bg-stone-50 rounded-lg transition-colors border border-stone-200"
               >
                 View Full Calendar
+              </button>
+            </div>
+            
+            {/* AI Performance Summary */}
+            <div className="bg-white rounded-xl shadow-lg p-6 border border-stone-200">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-medium text-stone-900">AI Performance Today</h3>
+                <Brain className="w-6 h-6 text-stone-600" />
+              </div>
+              
+              <div className="space-y-4">
+                {/* AI Accuracy */}
+                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-stone-900">AI Accuracy</p>
+                      <p className="text-sm text-stone-600">Call handling success</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-green-600">94.2%</p>
+                    <p className="text-sm text-green-600">+3.1%</p>
+                  </div>
+                </div>
+                
+                {/* Response Time */}
+                <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Clock className="w-4 h-4 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-stone-900">Avg Response</p>
+                      <p className="text-sm text-stone-600">Time per call</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-blue-600">1.8s</p>
+                    <p className="text-sm text-green-600">-12.3%</p>
+                  </div>
+                </div>
+                
+                {/* Automation Rate */}
+                <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <Star className="w-4 h-4 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-stone-900">Automation</p>
+                      <p className="text-sm text-stone-600">Calls handled by AI</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-purple-600">87.5%</p>
+                    <p className="text-sm text-green-600">+5.2%</p>
+                  </div>
+                </div>
+              </div>
+              
+              <button className="w-full mt-4 py-2 text-stone-900 hover:bg-stone-50 rounded-lg transition-colors border border-stone-200">
+                View Detailed Analytics
               </button>
             </div>
           </div>

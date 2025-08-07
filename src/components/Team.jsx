@@ -36,8 +36,8 @@ const Team = () => {
     
     return (
         <div id="team" className="min-h-screen bg-stone-50">
-            <section className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center px-4 py-16">
-                <div className="text-center text-4xl font-medium mb-8 text-stone-900">
+            <section className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-16">
+                <div className="text-center text-3xl sm:text-4xl font-medium mb-8 text-stone-900">
                     Team Behind Success
                 </div>
                 <div className="text-center text-stone-600 mb-12">
@@ -50,7 +50,7 @@ const Team = () => {
                 >
                     ◀
                 </button>
-                <div className="overflow-hidden" style={{ width: '1218px' }}>
+                <div className="overflow-hidden w-full max-w-4xl">
                     <motion.div
                         className="flex gap-6"
                         animate={{ x: `-${index * (380 + 24)}px` }}
@@ -60,15 +60,15 @@ const Team = () => {
                         {extendedMembers.map((member, i) => (
                             <div
                                 key={i}
-                                className="w-[380px] h-[28rem] bg-white rounded-2xl shadow-md p-4 flex-shrink-0"
+                                className="w-80 sm:w-[380px] h-[28rem] bg-white rounded-2xl shadow-md p-4 flex-shrink-0"
                             >
                                 <div className="text-lg font-normal">{member.name}</div>
-                                <div className="text-sm text-gray-500 mb-4">{member.role}</div>
+                                <div className="text-sm text-stone-500 mb-4">{member.role}</div>
 
                                 <div className="flex gap-2 mb-4">
-                                    <button className="bg-gray-100 p-2 rounded-lg">X</button>
-                                    <button className="bg-gray-100 p-2 rounded-lg">IG</button>
-                                    <button className="bg-gray-100 p-2 rounded-lg">LI</button>
+                                    <button className="bg-stone-100 p-2 rounded-lg hover:bg-stone-200 transition-colors">X</button>
+                                    <button className="bg-stone-100 p-2 rounded-lg hover:bg-stone-200 transition-colors">IG</button>
+                                    <button className="bg-stone-100 p-2 rounded-lg hover:bg-stone-200 transition-colors">LI</button>
                                 </div>
 
                                 <div className="rounded-xl overflow-hidden">

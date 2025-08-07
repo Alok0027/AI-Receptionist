@@ -14,13 +14,12 @@ import {
   User,
   LogOut,
 } from "lucide-react";
+import kairologo from "../assets/kairologo.png";
 
 const navItems = [
     { href: "/dashboard", icon: <LayoutDashboard size={20} />, label: "Dashboard" },
     { href: "/call-management", icon: <PhoneCall size={20} />, label: "Call Management" },
     { href: "/appointments", icon: <Calendar size={20} />, label: "Appointments Scheduling" },
-    { href: "/knowledge", icon: <Brain size={20} />, label: "Knowledge Base" },
-    { href: "/ai-insights", icon: <Settings size={20} />, label: "Customize Settings" },
     { href: "/billing", icon: <CreditCard size={20} />, label: "Billing & Subscription" },
     { href: "/integrations", icon: <PlugZap size={20} />, label: "Integrations" },
     { href: "/support-help", icon: <HelpCircle size={20} />, label: "Support / Help" },
@@ -41,6 +40,32 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                 style={nav}
             >
                 <motion.div style={background} variants={sidebarVariants} custom={height} />
+                {/* Logo Container */}
+                <motion.div
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '64px', // Match topbar height
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderBottom: '1px solid #e5e7eb',
+                        padding: '0 16px',
+                    }}
+                    variants={itemVariants}
+                >
+                    <img 
+                        src={kairologo} 
+                        alt="Kairo AI" 
+                        style={{
+                            height: '32px',
+                            width: 'auto',
+                            objectFit: 'contain'
+                        }}
+                    />
+                </motion.div>
                 <Navigation />
                 <MenuToggle toggle={toggleSidebar} />
             </motion.nav>
@@ -59,7 +84,6 @@ const navVariants = {
 
 const Navigation = () => (
     <motion.ul style={list} variants={navVariants}>
-       
         {navItems.map((item, i) => (
             <MenuItem item={item} key={i} />
         ))}
@@ -244,11 +268,16 @@ const toggleContainer = {
 
 const list = {
     listStyle: "none",
-    padding: 25,
+    padding: "25px",
     margin: 0,
     position: "absolute",
-    top: 80,
-    width: 230,
+    top: 64, 
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    height: "calc(100% - 64px)", 
+    paddingLeft: "40px", 
+    paddingRight: "40px",
 }
 
 const listItem = {

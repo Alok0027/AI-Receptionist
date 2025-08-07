@@ -5,18 +5,18 @@ import simpel3 from "../assets/simpel3.jpeg";
 
 const Simple = () => {
     return (
-        <section className="bg-gray-50 py-20">
+        <section className="bg-stone-50 py-20">
             {/* Header Section */}
             <div className="max-w-7xl mx-auto px-4 text-center mb-16">
-                <h2 className="text-4xl font-medium mb-4">Simple & Scalable</h2>
-                <p className="text-gray-600">A transparent process of collaboration and feedback</p>
+                <h2 className="text-3xl sm:text-4xl font-medium mb-4 text-stone-900">Simple & Scalable</h2>
+                <p className="text-stone-600">A transparent process of collaboration and feedback</p>
             </div>
 
             {/* Steps Container */}
             <div className="max-w-6xl mx-auto px-4 space-y-20">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* Left Large Card (Step 01 - Workflow Assessment) */}
-                    <div className="bg-white rounded-2xl p-8 shadow-md h-[70rem] flex flex-col">
+                    <div className="bg-white rounded-2xl p-6 md:p-8 shadow-md lg:h-[70rem] flex flex-col">
                         <div>
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
@@ -26,27 +26,27 @@ const Simple = () => {
                                 </div>
                                 
                             </div>
-                            <h3 className="text-xl font-normal mt-3">Workflow Assessment</h3>
-                            <p className="text-gray-600 mb-8 border-b border-gray-200 pb-6">
+                            <h3 className="text-lg sm:text-xl font-normal mt-3">Workflow Assessment</h3>
+                            <p className="text-stone-600 mb-8 border-b border-stone-200 pb-6">
                                 We begin by examining your existing workflows to identify where AI can deliver the greatest impact.
                             </p>
                             <div className="flex items-center gap-4 mt-6">
-                                <span className="text-6xl font-light text-gray-400">01</span>
+                                <span className="text-6xl font-light text-stone-400">01</span>
                                 <div className="flex space-x-2">
                                     <div className="w-2 h-2 bg-black rounded-full"></div>
-                                    <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                                    <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                    <div className="w-2 h-2 bg-stone-300 rounded-full"></div>
+                                    <div className="w-2 h-2 bg-stone-300 rounded-full"></div>
                                 </div>
                             </div>
                             <div className="bottom-0">
-                                <img src={simple1} alt="Workflow Assessment" className="w-full h-[50rem] object-cover rounded-xl" />
+                                <img src={simple1} alt="Workflow Assessment" className="w-full h-64 md:h-[50rem] object-cover rounded-xl" />
                             </div>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-6">
                         {/* Top Right Card (Step 02 - Deploy with Confidence) */}
-                        <div className="bg-white rounded-2xl p-8 shadow-md h-[34.5rem] flex flex-col">
+                        <div className="bg-white rounded-2xl p-6 md:p-8 shadow-md lg:h-[34.5rem] flex flex-col">
                             <div>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
@@ -54,17 +54,17 @@ const Simple = () => {
                                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
                                     </div>
-                                    <h3 className="text-xl font-normal">Deploy with Confidence</h3>
+                                    <h3 className="text-lg sm:text-xl font-normal">Deploy with Confidence</h3>
                                 </div>
-                                <p className="text-gray-600">
+                                <p className="text-stone-600">
                                     Our team develops custom AI systems built around your goals, ensuring safe and reliable deployment.
                                 </p>
                                 <div className="flex items-center gap-4 mt-6">
-                                    <span className="text-6xl font-light text-gray-400">02</span>
+                                    <span className="text-6xl font-light text-stone-400">02</span>
                                     <div className="flex space-x-2">
-                                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                        <div className="w-2 h-2 bg-stone-300 rounded-full"></div>
                                         <div className="w-2 h-2 bg-black rounded-full"></div>
-                                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                        <div className="w-2 h-2 bg-stone-300 rounded-full"></div>
                                     </div>
                                 </div>
                                 <div className="mt-6">
@@ -74,7 +74,7 @@ const Simple = () => {
                         </div>
 
                         {/* Bottom Right Card (Step 03 - Ongoing Support) */}
-                        <div className="bg-white rounded-2xl p-8 shadow-md h-[34rem] flex flex-col">
+                        <div className="bg-white rounded-2xl p-6 md:p-8 shadow-md lg:h-[34rem] flex flex-col">
                             <div>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
@@ -82,16 +82,16 @@ const Simple = () => {
                                             <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                         </svg>
                                     </div>
-                                    <h3 className="text-xl font-normal">Ongoing Support & Optimization</h3>
+                                    <h3 className="text-lg sm:text-xl font-normal">Ongoing Support & Optimization</h3>
                                 </div>
-                                <p className="text-gray-600">
+                                <p className="text-stone-600">
                                     After deployment, we provide support and refine your AI systems to keep them performing at their best.
                                 </p>
                                 <div className="flex items-center gap-4 mt-6">
-                                    <span className="text-6xl font-light text-gray-400">03</span>
+                                    <span className="text-6xl font-light text-stone-400">03</span>
                                     <div className="flex space-x-2">
-                                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                                        <div className="w-2 h-2 bg-stone-300 rounded-full"></div>
+                                        <div className="w-2 h-2 bg-stone-300 rounded-full"></div>
                                         <div className="w-2 h-2 bg-black rounded-full"></div>
                                     </div>
                                 </div>

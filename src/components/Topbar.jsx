@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Bell, ChevronDown, UserCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import AlokK from "../assets/AlokK.jpeg";
-import kairologo from "../assets/kairologo.png";
 
-const Topbar = () => {
+const Topbar = ({ currentPageTitle = 'Dashboard' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -36,13 +35,11 @@ const Topbar = () => {
   };
         return (
         <div className="flex items-center justify-between h-16 bg-stone-50 relative z-30">
-            {/* Brand Logo Area - matches sidebar width */}
-            <div className="flex items-center justify-center w-[300px] h-full">
-                <img 
-                    src={kairologo} 
-                    alt="Kairo AI" 
-                    className="h-8 w-auto object-contain -ml-40"
-                />
+            {/* Current Page Title Area - matches sidebar width */}
+            <div className="flex items-center justify-start w-[300px] h-full px-6">
+                <h1 className="text-xl font-semibold text-stone-900">
+                    {currentPageTitle}
+                </h1>
             </div>
 
             {/* Main Topbar Content */}

@@ -16,14 +16,14 @@ const CallRouting = () => {
 
   return (
     <div className="bg-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Route calls to the right people */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium text-stone-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-medium text-stone-900 mb-4">
               Route calls to the right people
             </h2>
-            <p className="text-xl text-stone-600 mb-8">
+            <p className="text-lg sm:text-xl text-stone-600 mb-8">
               Your AI Receptionist is trained to know who handles what, without putting your customers on hold.
             </p>
 
@@ -39,7 +39,7 @@ const CallRouting = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 space-y-6 md:space-y-0">
                 <div>
                   <p className="text-sm text-stone-600 mb-3">When customer says:</p>
                   <div className="space-y-2">
@@ -71,10 +71,10 @@ const CallRouting = () => {
 
           {/* Right Side - Trained as your company expert */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium text-stone-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-medium text-stone-900 mb-4">
               Trained as your company expert
             </h2>
-            <p className="text-xl text-stone-600 mb-8">
+            <p className="text-lg sm:text-xl text-stone-600 mb-8">
               Turn your AI Receptionist into a company expert by customizing it to your business knowledge, policies, processes, and more.
             </p>
 

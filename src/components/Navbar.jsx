@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { scrollToElement } from '../hooks/useLenis';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import kairologo from "../assets/kairologo.png";
 
@@ -25,14 +26,15 @@ const Navbar = () => {
 
     const handleScrollToSection = (sectionId) => {
         if (location.pathname === '/') {
-            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+            scrollToElement(`#${sectionId}`);
         } else {
             navigate(`/#${sectionId}`);
         }
     };
 
+
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/10 backdrop-blur-sm' : 'bg-transparent'}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/30' : 'bg-transparent'}`}>
             <div className="max-w-7xl flex flex-row justify-between items-center my-4 mx-auto">
                 <h1>
                     <Link
@@ -46,7 +48,7 @@ const Navbar = () => {
                     <a
                         href="/#features"
                         onClick={(e) => { e.preventDefault(); handleScrollToSection('features'); }}
-                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)] cursor-pointer"
+                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-inner cursor-pointer"
                     >
                         Features
                     </a>
@@ -61,25 +63,25 @@ const Navbar = () => {
                                 window.location.href = '/#pricing';
                             }
                         }}
-                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
+                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-inner"
                     >
                         Pricing
                     </Link>
                     <Link
                         to="/updates"
-                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
+                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-inner"
                     >
                         Services
                     </Link>
                     <Link
                         to="/updates"
-                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
+                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-inner"
                     >
                         Updates
                     </Link>
                     <Link
                         to="/contact"
-                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[inset_0_6px_6px_-4px_rgba(0,0,0,0.2)]"
+                        className="px-4 py-2 rounded-xl transition-all duration-200 hover:bg-white hover:text-black hover:shadow-inner"
                     >
                         Contact
                     </Link>

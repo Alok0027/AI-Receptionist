@@ -248,18 +248,18 @@ const SupportHelpPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-stone-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900">
+      <div className="bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-10 rounded-2xl mb-6">
-              <HelpCircle className="w-8 h-8 text-white" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-stone-100 rounded-2xl mb-6">
+              <HelpCircle className="w-8 h-8 text-stone-700" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-medium text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
               How can we help you?
             </h1>
-            <p className="text-xl text-stone-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-stone-600 mb-8 max-w-2xl mx-auto">
               Find answers, get support, and learn how to make the most of our platform
             </p>
             
@@ -328,32 +328,32 @@ const SupportHelpPage = () => {
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
                       className={`p-6 rounded-2xl cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                        selectedCategory === category.id ? 'bg-stone-900 text-white' : 'bg-white hover:bg-stone-50'
+                        selectedCategory === category.id ? 'bg-stone-50 border border-stone-300 text-stone-900' : 'bg-white hover:bg-stone-50'
                       }`}
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                          selectedCategory === category.id ? 'bg-white bg-opacity-20' : category.color
+                          selectedCategory === category.id ? 'bg-stone-200' : category.color
                         }`}>
                           <Icon className={`w-6 h-6 ${
-                            selectedCategory === category.id ? 'text-white' : ''
+                            selectedCategory === category.id ? 'text-stone-900' : ''
                           }`} />
                         </div>
                         <span className={`text-sm px-3 py-1 rounded-full ${
                           selectedCategory === category.id 
-                            ? 'bg-white bg-opacity-20 text-white' 
+                            ? 'bg-stone-100 text-stone-900' 
                             : 'bg-stone-100 text-stone-600'
                         }`}>
                           {category.articles} articles
                         </span>
                       </div>
                       <h3 className={`font-normal mb-2 ${
-                        selectedCategory === category.id ? 'text-white' : 'text-gray-900'
+                        selectedCategory === category.id ? 'text-stone-900' : 'text-gray-900'
                       }`}>
                         {category.title}
                       </h3>
                       <p className={`text-sm ${
-                        selectedCategory === category.id ? 'text-stone-300' : 'text-gray-600'
+                        selectedCategory === category.id ? 'text-stone-600' : 'text-gray-600'
                       }`}>
                         {category.description}
                       </p>
@@ -512,16 +512,16 @@ const SupportHelpPage = () => {
             </div>
 
             {/* Contact Support */}
-            <div className="bg-gradient-to-br from-stone-900 to-stone-800 rounded-2xl p-6 text-white">
+            <div className="bg-stone-50 rounded-2xl p-6 text-stone-900 border border-stone-200">
               <div className="text-center">
-                <div className="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Headphones className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-stone-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Headphones className="w-8 h-8 text-stone-700" />
                 </div>
-                <h3 className="font-normal mb-2">Need Personal Help?</h3>
-                <p className="text-stone-300 text-sm mb-4">
+                <h3 className="font-normal mb-2 text-stone-900">Need Personal Help?</h3>
+                <p className="text-stone-600 text-sm mb-4">
                   Our support team is here to help you succeed
                 </p>
-                <button className="w-full bg-white text-stone-900 py-3 px-4 rounded-lg hover:bg-stone-100 transition-colors font-medium">
+                <button className="w-full bg-stone-900 text-white py-3 px-4 rounded-lg hover:bg-stone-800 transition-colors font-medium">
                   Contact Support
                 </button>
               </div>

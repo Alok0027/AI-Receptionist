@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from "react";
-import Nextbot from './Nextbot';
+import { useEffect, useState, useRef, lazy, Suspense } from "react";
+
+const Nextbot = lazy(() => import('./Nextbot'));
 import gsap from "gsap";
 
 const Hero = () => {
@@ -42,32 +43,41 @@ const Hero = () => {
     }
   }, [showTagline]);
 
-  const title = "Kairo";
+  const title = "Meet Your Smartest Receptionist Yet";
   const tagline =
     "The AI that gives you the edge — experience dynamic intelligence with movement, form, and power.";
 
   return (
     <section className="relative h-screen w-full bg-neutral-300">
-      <Nextbot />
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center text-black pointer-events-none">
-        {showTitle && (
-          <h1
-            ref={titleRef}
-            className="hero-title text-5xl md:text-6xl font-medium mb-4 text-white"
-            aria-label={title}
-          >
-            {title}
-          </h1>
-        )}
-        {showTagline && (
-          <p
-            ref={taglineRef}
-            className="hero-tagline text-xl text-white max-w-xl"
-            aria-label={tagline}
-          >
-            {tagline}
-          </p>
-        )}
+      <div className="absolute inset-0 flex">
+        {/* Text Content - Left Side */}
+        <div className="w-1/2 z-10 flex flex-col justify-center items-start text-left text-black px-8 lg:px-16">
+          {showTitle && (
+            <h1
+              ref={titleRef}
+              className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-4 text-black"
+              aria-label={title}
+            >
+              {title}
+            </h1>
+          )}
+          {showTagline && (
+            <p
+              ref={taglineRef}
+              className="hero-tagline text-lg sm:text-xl lg:text-2xl text-black max-w-2xl font-medium"
+              aria-label={tagline}
+            >
+              {tagline}
+            </p>
+          )}
+        </div>
+        
+        {/* 3D Model - Right Side */}
+        <div className="w-1/2 h-full relative">
+          <Suspense fallback={null}>
+            <Nextbot />
+          </Suspense>
+        </div>
       </div>
     </section>
   );

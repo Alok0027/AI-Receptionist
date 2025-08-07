@@ -3,8 +3,8 @@ import tick from "../assets/tick.svg";
 const Pricing = () => {
     return(
         <div className="min-h-screen bg-stone-50">
-            <section id="pricing" className="max-w-7xl mx-auto py-16 px-6">
-                <div className="text-center text-4xl font-normal text-stone-900 mb-4">
+            <section id="pricing" className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                <div className="text-center text-3xl sm:text-4xl font-normal text-stone-900 mb-4">
                     Simple Price For All
                 </div>
                 <div className="text-center text-stone-600 mt-4 mb-8 text-lg">
@@ -12,7 +12,7 @@ const Pricing = () => {
                 </div>
             <div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="p-6 border border-stone-200 rounded-lg shadow-sm hover:shadow-md transition duration-300 h-[25rem] flex flex-col justify-between bg-white">
+                    <div className="p-6 border rounded-lg shadow hover:shadow-md transition duration-300 h-[32rem] flex flex-col justify-between">
                         <div>
                             <h3 className="text-lg font-normal mb-2 text-stone-900">Starter</h3>
                             <p className="text-stone-900 mb-4 text-4xl text-medium">$800<span className="text-base font-light text-stone-600">/month</span></p>
@@ -46,8 +46,8 @@ const Pricing = () => {
     >
         <span className="text-base">Get Started</span>
     </button>
-                        <div className="flex flex-col justify-between h-[10rem]">
-                            <div className="flex items-center gap-2 mt-6">
+                        <div className="flex flex-col flex-1 justify-between gap-2 mt-6">
+                            <div className="flex items-center gap-2">
                                 <img src={tick} alt="tickimg" className="w-5 h-5" />
                                 <span>Basic AI Tools</span>
                             </div>
@@ -63,9 +63,13 @@ const Pricing = () => {
                                 <img src={tick} alt="tickimg" className="w-5 h-5" />
                                 <span>Basic Chatbot Integration</span>
                             </div>
+                            <div className="flex items-center gap-2">
+                                <img src={tick} alt="tickimg" className="w-5 h-5" />
+                                <span>Email Support</span>
+                            </div>
                         </div>
                     </div>
-                    <div className="p-6 border rounded-lg shadow hover:shadow-md transition duration-300 h-[28rem] flex flex-col justify-between">
+                    <div className="p-6 border rounded-lg shadow hover:shadow-md transition duration-300 h-[32rem] flex flex-col justify-between">
     <div>
         <h3 className="text-lg font-normal mb-2">Pro</h3>
         <p className="text-black mb-4 text-4xl text-medium">$1700<span className="text-base font-light">/month</span></p>
@@ -99,7 +103,7 @@ const Pricing = () => {
     >
         <span className="text-base">Get Started</span>
     </button>
-    <div className="flex flex-col flex-1 justify-between gap-3 mt-6">
+    <div className="flex flex-col flex-1 justify-between gap-2 mt-6">
         <div className="flex items-center gap-2">
             <img src={tick} alt="tickimg" className="w-5 h-5" />
             <span>Advanced AI Tools</span>

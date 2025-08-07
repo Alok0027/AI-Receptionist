@@ -4,14 +4,14 @@ import { BarChart3, TrendingUp, Clock, Users } from 'lucide-react';
 const AIAnalytics = () => {
   return (
     <div className="bg-stone-50 py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Know what's working */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium text-stone-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-medium text-stone-900 mb-4">
               Know what's working
             </h2>
-            <p className="text-xl text-stone-600 mb-8">
+            <p className="text-lg sm:text-xl text-stone-600 mb-8">
               Easily see how your AI Receptionist is performing, spot gaps, and improve responses in one click.
             </p>
 
@@ -24,7 +24,7 @@ const AIAnalytics = () => {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                 {/* Resolved vs unresolved calls */}
                 <div>
                   <p className="text-sm text-stone-600 mb-2">Resolved vs unresolved calls</p>
@@ -118,10 +118,10 @@ const AIAnalytics = () => {
 
           {/* Right Side - Schedule appointments */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium text-stone-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-medium text-stone-900 mb-4">
               Schedule appointments
             </h2>
-            <p className="text-xl text-stone-600 mb-8">
+            <p className="text-lg sm:text-xl text-stone-600 mb-8">
               Effortlessly handle bookings, reschedule appointments, send texts, and share relevant links right after calls — no manual follow-up needed.
             </p>
 

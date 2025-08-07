@@ -28,7 +28,10 @@ import Features from './components/Features';
 import Pricing from './components/Pricing';
 import Team from './components/Team';
 
+import { useLenis } from './hooks/useLenis';
+
 function AppContent() {
+  useLenis();
   const location = useLocation();
     const isSoftwarePage = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/call-management') || location.pathname.startsWith('/appointments') || location.pathname.startsWith('/knowledge') || location.pathname.startsWith('/billing') || location.pathname.startsWith('/integrations') || location.pathname.startsWith('/support-help') || location.pathname.startsWith('/profile');
 

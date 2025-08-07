@@ -27,8 +27,8 @@ const AlwaysOnService = () => {
 
   return (
     <div className="bg-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Side - Image/Demo */}
           <div className="relative">
             <div className="bg-gradient-to-br from-stone-100 to-neutral-200 rounded-2xl p-8 relative overflow-hidden">
@@ -45,13 +45,13 @@ const AlwaysOnService = () => {
               </div>
               
               {/* Chat bubbles */}
-              <div className="absolute top-8 right-8 bg-white rounded-2xl p-4 shadow-lg max-w-xs">
+              <div className="absolute top-4 right-4 md:top-8 md:right-8 bg-white rounded-2xl p-3 md:p-4 shadow-lg max-w-xs text-xs md:text-sm">
                 <p className="text-sm text-stone-700 mb-2">
                   "Hi, I know it's late, but can I schedule an appointment for tomorrow morning, 11AM?"
                 </p>
               </div>
               
-              <div className="absolute bottom-8 left-8 bg-stone-800 text-white rounded-2xl p-4 shadow-lg max-w-xs">
+              <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-stone-800 text-white rounded-2xl p-3 md:p-4 shadow-lg max-w-xs text-xs md:text-sm">
                 <div className="flex items-center space-x-2 mb-2">
                   <div className="w-6 h-6 bg-stone-800 rounded-full flex items-center justify-center">
                     <span className="text-xs">AI</span>
@@ -67,10 +67,10 @@ const AlwaysOnService = () => {
 
           {/* Right Side - Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium text-stone-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-medium text-stone-900 mb-4">
               Your always-on, reliable front desk
             </h2>
-            <p className="text-xl text-stone-600 mb-8">
+            <p className="text-lg sm:text-xl text-stone-600 mb-8">
               Never miss another call with AI that works around the clock to provide exceptional customer service.
             </p>
 
@@ -94,7 +94,7 @@ const AlwaysOnService = () => {
             </div>
 
             <div className="mt-8">
-              <button className="bg-stone-900 text-white px-8 py-3 rounded-lg hover:bg-stone-800 transition-colors font-medium">
+              <button className="bg-stone-900 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg hover:bg-stone-800 transition-colors font-medium">
                 Start Your Free Trial
               </button>
             </div>

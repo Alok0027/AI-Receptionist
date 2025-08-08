@@ -1,0 +1,23 @@
+/* Ensure the app takes full viewport height and uses flexbox layout */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the main content area grow to fill available space */
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the main content grows and pushes footer down */
+.main-content {
+  flex: 1;
+}
+
+/* Footer will naturally be pushed to bottom */
+footer {
+  margin-top: auto;
+}

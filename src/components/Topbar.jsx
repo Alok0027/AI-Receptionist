@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bell, ChevronDown, UserCircle } from 'lucide-react';
+import { Bell, ChevronDown, UserCircle, DoorOpen, KeyRound } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import AlokK from "../assets/AlokK.jpeg";
 
@@ -65,17 +65,19 @@ const Topbar = ({ currentPageTitle = 'Dashboard' }) => {
 
                         {isDropdownOpen && (
                             <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50 border border-stone-200">
-                                <Link 
+                                <Link
                                     to="/forgot-password"
-                                    className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100"
+                                    className="flex items-center px-4 py-2 text-sm text-stone-700 hover:bg-stone-100"
                                     onClick={() => setIsDropdownOpen(false)}
                                 >
+                                    <KeyRound size={16} className="mr-2" />
                                     Forgot Password
                                 </Link>
-                                <button 
+                                <button
                                     onClick={handleLogout}
-                                    className="w-full text-left block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100"
+                                    className="w-full text-left flex items-center px-4 py-2 text-sm text-red-600 hover:bg-stone-100"
                                 >
+                                    <DoorOpen size={16} className="mr-2" />
                                     Logout
                                 </button>
                             </div>

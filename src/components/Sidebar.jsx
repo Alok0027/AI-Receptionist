@@ -12,14 +12,14 @@ import {
   PlugZap,
   HelpCircle,
   User,
-  LogOut,
+  DoorOpen,
 } from "lucide-react";
 import kairologo from "../assets/kairologo.png";
 
 const navItems = [
     { href: "/dashboard", icon: <LayoutDashboard size={20} />, label: "Dashboard" },
     { href: "/call-management", icon: <PhoneCall size={20} />, label: "Call Management" },
-    { href: "/appointments", icon: <Calendar size={20} />, label: "Appointments Scheduling" },
+    { href: "/appointments", icon: <Calendar size={20} />, label: "Appointment Scheduling" },
     { href: "/billing", icon: <CreditCard size={20} />, label: "Billing & Subscription" },
     { href: "/integrations", icon: <PlugZap size={20} />, label: "Integrations" },
     { href: "/support-help", icon: <HelpCircle size={20} />, label: "Support / Help" },
@@ -30,8 +30,14 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     const containerRef = useRef(null)
     const { height } = useDimensions(containerRef)
 
+    const handleMouseLeave = () => {
+        if (!isCollapsed) {
+            toggleSidebar();
+        }
+    };
+
     return (
-        <div style={container}>
+        <div style={container} onMouseLeave={handleMouseLeave}>
             <motion.nav
                 initial={false}
                 animate={isCollapsed ? "closed" : "open"}
@@ -67,6 +73,44 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                     />
                 </motion.div>
                 <Navigation />
+                <motion.div
+                    style={{
+                        ...listItem,
+                        position: 'absolute',
+                        bottom: 20,
+                        left: 20,
+                        width: 230,
+                        borderTop: '1px solid #e5e7eb',
+                        paddingTop: '16px',
+                        margin: 0,
+                    }}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                   <Link
+                       to="/"
+                       style={{
+                           color: '#dc2626',
+                           textDecoration: 'none',
+                           display: 'flex',
+                           alignItems: 'center',
+                           width: '100%'
+                       }}
+                       onClick={() => {
+                           // Clear any stored authentication data
+                           localStorage.removeItem('authToken');
+                           localStorage.removeItem('user');
+                       }}
+                   >
+                       <div style={iconPlaceholder}>
+                           <DoorOpen size={20} />
+                       </div>
+                       <div style={{...textPlaceholder, color: 'inherit'}}>
+                           Logout
+                       </div>
+                   </Link>
+                </motion.div>
                 <MenuToggle toggle={toggleSidebar} />
             </motion.nav>
         </div>
@@ -87,38 +131,6 @@ const Navigation = () => (
         {navItems.map((item, i) => (
             <MenuItem item={item} key={i} />
         ))}
-        {/* Logout Button */}
-        <motion.li
-            style={{
-                ...listItem,
-                marginTop: 'auto',
-                borderTop: '1px solid #e5e7eb',
-                paddingTop: '16px'
-            }}
-            variants={itemVariants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-        >
-            <Link
-                to="/"
-                style={{
-                    ...iconPlaceholder,
-                    color: '#dc2626',
-                    textDecoration: 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px'
-                }}
-                onClick={() => {
-                    // Clear any stored authentication data
-                    localStorage.removeItem('authToken');
-                    localStorage.removeItem('user');
-                }}
-            >
-                <LogOut size={20} />
-                <span>Logout</span>
-            </Link>
-        </motion.li>
     </motion.ul>
 )
 
@@ -212,9 +224,7 @@ const MenuToggle = ({ toggle }) => (
     </button>
 )
 
-/**
- * ==============   Styles   ================
- */
+
 
 const container = {
     position: "fixed",
@@ -254,7 +264,7 @@ const toggleContainer = {
     MozUserSelect: "none",
     cursor: "pointer",
     position: "absolute",
-    top: 8, // Adjusted to be higher and centered with the topbar
+    top: 8, 
     left: 15,
     width: 50,
     height: 50,
@@ -267,17 +277,13 @@ const toggleContainer = {
 }
 
 const list = {
-    listStyle: "none",
-    padding: "25px",
     margin: 0,
+    padding: "80px 0 20px 0",
     position: "absolute",
-    top: 64, 
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    height: "calc(100% - 64px)", 
-    paddingLeft: "40px", 
-    paddingRight: "40px",
+    top: 0,
+    width: 230,
+    left: 20,
+    listStyle: "none",
 }
 
 const listItem = {
@@ -307,11 +313,15 @@ const textPlaceholder = {
     width: 200,
     height: 20,
     flex: 1,
+    fontSize: "14px",
+    fontWeight: "500",
+    color: "#374151",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
 }
 
-/**
- * ==============   Utils   ================
- */
+
 
 const useDimensions = (ref) => {
     const dimensions = useRef({ width: 0, height: 0 })

@@ -36,9 +36,10 @@ function AppContent() {
     const isSoftwarePage = location.pathname.startsWith('/dashboard') || location.pathname.startsWith('/call-management') || location.pathname.startsWith('/appointments') || location.pathname.startsWith('/knowledge') || location.pathname.startsWith('/billing') || location.pathname.startsWith('/integrations') || location.pathname.startsWith('/support-help') || location.pathname.startsWith('/profile');
 
   return (
-    <>
+    <div className="app-content">
       {!isSoftwarePage && <Navbar />}
-      <Routes>
+      <main className="main-content">
+        <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -122,9 +123,10 @@ function AppContent() {
             </SoftwareLayout>
           }
         />
-      </Routes>
+        </Routes>
+      </main>
       {!isSoftwarePage && <Footer />}
-    </>
+    </div>
   );
 }
 

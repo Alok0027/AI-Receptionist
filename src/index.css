@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@keyframes loading-underline {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0%;
+    left: 100%;
+  }
+}
+
+.loading-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.loading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+}
+
+.group:hover .loading-underline::after {
+  animation: loading-underline 1s infinite;
+}

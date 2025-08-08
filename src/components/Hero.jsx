@@ -1,76 +1,132 @@
 import { useEffect, useState, useRef, lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Nextbot = lazy(() => import('./Nextbot'));
-import gsap from "gsap";
 
 const Hero = () => {
-  const [showTitle, setShowTitle] = useState(false);
-  const [showTagline, setShowTagline] = useState(false);
-
-  const titleRef = useRef(null);
-  const taglineRef = useRef(null);
-
-  useEffect(() => {
-    const titleTimer = setTimeout(() => setShowTitle(true), 2000);
-    const taglineTimer = setTimeout(() => setShowTagline(true), 3500);
-    return () => {
-      clearTimeout(titleTimer);
-      clearTimeout(taglineTimer);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (showTitle && titleRef.current) {
-      document.fonts.ready.then(() => {
-        gsap.fromTo(
-          titleRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 1.2, ease: "sine.out" }
-        );
-      });
+  // Animation variants for different elements
+  const titleVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut",
+        delay: 0.5
+      }
     }
-  }, [showTitle]);
+  };
 
-  useEffect(() => {
-    if (showTagline && taglineRef.current) {
-      document.fonts.ready.then(() => {
-        gsap.fromTo(
-          taglineRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 1.2, ease: "sine.out" }
-        );
-      });
+  const taglineVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      x: -20
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      x: 0,
+      transition: {
+        duration: 1.0,
+        ease: "easeOut",
+        delay: 1.2
+      }
     }
-  }, [showTagline]);
+  };
 
-  const title = "Meet Your Smartest Receptionist Yet";
+  const buttonsVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.8
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 1.8
+      }
+    }
+  };
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const title = "From Static to Smart — Welcome to the Future.";
   const tagline =
-    "The AI that gives you the edge — experience dynamic intelligence with movement, form, and power.";
+    "Say goodbye to blank screens and hello to dynamic conversations. Your AI receptionist is alert, adaptive, and always evolving.";
 
   return (
-    <section className="relative h-screen w-full bg-neutral-300">
+    <section className="relative h-screen w-full bg-[#E3E3E3]">
       <div className="absolute inset-0 flex">
         {/* Text Content - Left Side */}
-        <div className="w-1/2 z-10 flex flex-col justify-center items-start text-left text-black px-8 lg:px-16">
-          {showTitle && (
-            <h1
-              ref={titleRef}
-              className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-4 text-black"
-              aria-label={title}
-            >
-              {title}
-            </h1>
-          )}
-          {showTagline && (
-            <p
-              ref={taglineRef}
-              className="hero-tagline text-lg sm:text-xl lg:text-2xl text-black max-w-2xl font-normal"
-              aria-label={tagline}
-            >
-              {tagline}
-            </p>
-          )}
-        </div>
+        <motion.div 
+          className="w-1/2 z-10 flex flex-col justify-center items-start text-left text-black px-8 lg:px-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1
+            variants={titleVariants}
+            className="hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4 text-black"
+            aria-label={title}
+          >
+            {title}
+          </motion.h1>
+          
+          <motion.p
+            variants={taglineVariants}
+            className="hero-tagline text-lg sm:text-xl lg:text-xl text-black max-w-xl font-light"
+            aria-label={tagline}
+          >
+            {tagline}
+          </motion.p>
+          
+          <motion.div 
+            variants={buttonsVariants}
+            className="flex items-center space-x-6 mt-8"
+          >
+            <Link to="/register">
+              <motion.button 
+                className="hero-button px-8 py-3 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition-colors shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Now
+              </motion.button>
+            </Link>
+            <Link to="/blog">
+              <motion.button 
+                className="group text-black py-3 px-5 text-lg"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="loading-underline">
+                  Learn More
+                </span>
+              </motion.button>
+            </Link>
+          </motion.div>
+        </motion.div>
+        
         
         {/* 3D Model - Right Side */}
         <div className="w-1/2 h-full relative">

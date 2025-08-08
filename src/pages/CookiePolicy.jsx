@@ -2,7 +2,7 @@ import React from 'react';
 
 const CookiePolicy = () => {
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 mt-10">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-medium text-stone-900 mb-4">Cookie Policy</h1>

@@ -40,7 +40,7 @@ const ApiDocs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-stone-50 mt-10">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-medium text-stone-900 mb-4">API Documentation</h1>
@@ -197,7 +197,7 @@ const ApiDocs = () => {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    phone_number: '+1234567890',
+    phone_number: '+91 1234567890',
     message: 'Hello, this is a test call',
     voice_id: 'default'
   })
@@ -220,7 +220,7 @@ headers = {
     "Content-Type": "application/json"
 }
 data = {
-    "phone_number": "+1234567890",
+    "phone_number": "+91 1234567890",
     "message": "Hello, this is a test call",
     "voice_id": "default"
 }

@@ -190,20 +190,7 @@ const Login = () => {
             </div>
 
             {/* Footer */}
-            <footer className="bg-black border-t border-stone-700">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <div className="flex flex-col sm:flex-row justify-between items-center">
-                        <div className="flex items-center space-x-6 text-sm text-stone-400 mb-4 sm:mb-0">
-                            <a href="#" className="hover:text-white text-stone-400">Privacy Policy</a>
-                            <a href="#" className="hover:text-white text-stone-400">Terms of Service</a>
-                            <a href="#" className="hover:text-white text-stone-400">Help Center</a>
-                        </div>
-                        <div className="text-sm text-stone-400">
-                            © 2024 AutomateAI. All rights reserved.
-                        </div>
-                    </div>
-                </div>
-            </footer>
+        
         </div>
     );
 }

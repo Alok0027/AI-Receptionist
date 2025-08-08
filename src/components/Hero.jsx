@@ -77,16 +77,16 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full bg-[#E3E3E3]">
       <div className="absolute inset-0 flex">
-        {/* Text Content - Left Side */}
+        {/* Text Content - Responsive Layout */}
         <motion.div 
-          className="w-1/2 z-10 flex flex-col justify-center items-start text-left text-black pl-8 lg:pl-16 pr-8"
+          className="w-full md:w-1/2 z-10 flex flex-col justify-center items-center md:items-start text-center md:text-left text-black px-4 md:pl-8 lg:pl-16 md:pr-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.h1
             variants={titleVariants}
-            className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-6 text-black"
+            className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal mb-6 text-black max-w-4xl"
             aria-label={title}
           >
             {title}
@@ -94,7 +94,7 @@ const Hero = () => {
 
           <motion.p
             variants={taglineVariants}
-            className="hero-tagline text-xl sm:text-2xl lg:text-2xl text-black max-w-xl font-light mt-2"
+            className="hero-tagline text-lg sm:text-xl md:text-xl lg:text-2xl text-black max-w-2xl font-light mt-2"
             aria-label={tagline}
           >
             {tagline}
@@ -102,7 +102,7 @@ const Hero = () => {
 
           <motion.div 
             variants={buttonsVariants}
-            className="flex items-center space-x-8 mt-10"
+            className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 mt-10"
           >
             <Link to="/register">
               <motion.button 
@@ -128,8 +128,8 @@ const Hero = () => {
         </motion.div>
         
         
-        {/* 3D Model - Right Side */}
-        <div className="w-1/2 h-full relative">
+        {/* 3D Model - Hidden on Mobile */}
+        <div className="hidden md:block w-1/2 h-full relative">
           <Suspense fallback={null}>
             <Nextbot />
           </Suspense>

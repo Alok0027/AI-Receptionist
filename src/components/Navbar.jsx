@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { scrollToElement } from '../hooks/useLenis';
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Menu, X } from 'lucide-react';
 import kairologo from "../assets/kairologo.png";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,7 +37,7 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/30' : 'bg-transparent'}`}>
-            <div className="max-w-7xl flex flex-row justify-between items-center my-4 mx-auto">
+            <div className="max-w-7xl flex flex-row justify-between items-center my-4 mx-auto px-4">
                 <h1>
                     <Link
                         to="/"
@@ -44,7 +46,9 @@ const Navbar = () => {
                         <img src={kairologo} alt="Kairo Logo" className="w-auto h-12 inline-block mr-2" />
                     </Link>
                 </h1>
-                <div className="flex gap-4 text-sm">
+                
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex gap-4 text-sm">
                     <a
                         href="/#features"
                         onClick={(e) => { e.preventDefault(); handleScrollToSection('features'); }}
@@ -86,14 +90,87 @@ const Navbar = () => {
                         Contact
                     </Link>
                 </div>
-                <div>
+                
+                {/* Desktop Login Button */}
+                <div className="hidden md:block">
                     <Link to="/login">
                         <button className="bg-black text-white px-6 py-2 rounded-lg text-base hover:shadow-[0_4px_25px_rgba(0,0,0,0.4)] transition-shadow duration-200">
                             Login
                         </button>
                     </Link>
                 </div>
+                
+                {/* Mobile Menu Button */}
+                <button 
+                    className="md:hidden p-2 text-black"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
             </div>
+            
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200">
+                    <div className="px-4 py-2 space-y-2">
+                        <a
+                            href="/#features"
+                            onClick={(e) => { 
+                                e.preventDefault(); 
+                                handleScrollToSection('features');
+                                setIsMobileMenuOpen(false);
+                            }}
+                            className="block px-4 py-2 text-black hover:bg-gray-100 rounded-lg transition-colors"
+                        >
+                            Features
+                        </a>
+                        <Link
+                            to="/#pricing"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                const pricingSection = document.getElementById('pricing');
+                                if (pricingSection) {
+                                    pricingSection.scrollIntoView({ behavior: 'smooth' });
+                                } else {
+                                    window.location.href = '/#pricing';
+                                }
+                                setIsMobileMenuOpen(false);
+                            }}
+                            className="block px-4 py-2 text-black hover:bg-gray-100 rounded-lg transition-colors"
+                        >
+                            Pricing
+                        </Link>
+                        <Link
+                            to="/updates"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-4 py-2 text-black hover:bg-gray-100 rounded-lg transition-colors"
+                        >
+                            Services
+                        </Link>
+                        <Link
+                            to="/updates"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-4 py-2 text-black hover:bg-gray-100 rounded-lg transition-colors"
+                        >
+                            Updates
+                        </Link>
+                        <Link
+                            to="/contact"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-4 py-2 text-black hover:bg-gray-100 rounded-lg transition-colors"
+                        >
+                            Contact
+                        </Link>
+                        <div className="pt-2 border-t border-gray-200">
+                            <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                                <button className="w-full bg-black text-white px-6 py-2 rounded-lg text-base hover:shadow-[0_4px_25px_rgba(0,0,0,0.4)] transition-shadow duration-200">
+                                    Login
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
         </nav>
     );
 }

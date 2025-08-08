@@ -79,30 +79,30 @@ const Hero = () => {
       <div className="absolute inset-0 flex">
         {/* Text Content - Left Side */}
         <motion.div 
-          className="w-1/2 z-10 flex flex-col justify-center items-start text-left text-black px-8 lg:px-16"
+          className="w-1/2 z-10 flex flex-col justify-center items-start text-left text-black pl-8 lg:pl-16 pr-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.h1
             variants={titleVariants}
-            className="hero-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4 text-black"
+            className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-6 text-black"
             aria-label={title}
           >
             {title}
           </motion.h1>
-          
+
           <motion.p
             variants={taglineVariants}
-            className="hero-tagline text-lg sm:text-xl lg:text-xl text-black max-w-xl font-light"
+            className="hero-tagline text-xl sm:text-2xl lg:text-2xl text-black max-w-xl font-light mt-2"
             aria-label={tagline}
           >
             {tagline}
           </motion.p>
-          
+
           <motion.div 
             variants={buttonsVariants}
-            className="flex items-center space-x-6 mt-8"
+            className="flex items-center space-x-8 mt-10"
           >
             <Link to="/register">
               <motion.button 

@@ -53,7 +53,7 @@ export const useLenis = () => {
     document.head.appendChild(style);
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: 'vertical',
       gestureDirection: 'vertical',
@@ -68,7 +68,6 @@ export const useLenis = () => {
       normalizeWheel: true
     });
 
-    // Make lenis globally accessible
     window.lenis = lenis;
 
     function raf(time) {
@@ -78,7 +77,6 @@ export const useLenis = () => {
 
     requestAnimationFrame(raf);
 
-    // Add smooth scroll behavior to all anchor links
     const handleAnchorClick = (e) => {
       const target = e.target.closest('a');
       if (target && target.getAttribute('href')?.startsWith('#')) {

@@ -3,7 +3,7 @@ import AlokK from "../assets/AlokK.jpeg";
 
 const Lines = () => {
   return (
-    <section className="bg-stone-50 py-32 px-4 sm:px-6 lg:px-8">
+    <section className="bg-stone-50 py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Elegant header */}
         <div className="text-center mb-24">

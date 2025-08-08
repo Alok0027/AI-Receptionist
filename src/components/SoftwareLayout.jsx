@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 
 const SoftwareLayout = ({ children }) => {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(true); // Default to collapsed (icon-only)
   const [currentPageTitle, setCurrentPageTitle] = useState('Dashboard');
   const location = useLocation();
 
@@ -35,7 +35,7 @@ const SoftwareLayout = ({ children }) => {
   return (
     <div className="flex h-screen bg-stone-50">
       <Sidebar isCollapsed={sidebarCollapsed} toggleSidebar={toggleSidebar} />
-      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${sidebarCollapsed ? 'ml-16' : 'ml-[300px]'}`}>
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${sidebarCollapsed ? 'ml-20' : 'ml-[300px]'}`}>
         <Topbar currentPageTitle={currentPageTitle} />
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-stone-50 p-6 space-y-6">
           {children}

@@ -188,8 +188,6 @@ const Login = () => {
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-white bg-opacity-5 rounded-full -ml-24 -mb-24"></div>
                 </div>
             </div>
-
-            {/* Footer */}
         
         </div>
     );

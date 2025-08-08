@@ -37,15 +37,100 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     };
 
     return (
-        <div style={container} onMouseLeave={handleMouseLeave}>
-            <motion.nav
-                initial={false}
-                animate={isCollapsed ? "closed" : "open"}
-                custom={height}
-                ref={containerRef}
-                style={nav}
-            >
-                <motion.div style={background} variants={sidebarVariants} custom={height} />
+        <>
+            {/* Collapsed Icon-Only Sidebar */}
+            {isCollapsed && (
+                <div style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: 80,
+                    height: "100vh",
+                    backgroundColor: "#fafaf9",
+                    borderRight: "1px solid #e5e7eb",
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    zIndex: 40,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    paddingTop: "80px",
+                    gap: "20px"
+                }}>
+                    {navItems.map((item, i) => (
+                        <Link
+                            key={i}
+                            to={item.href}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "8px",
+                                color: "#374151",
+                                textDecoration: "none",
+                                transition: "all 0.2s ease",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.closest('a').style.backgroundColor = '#f3f4f6';
+                                e.target.closest('a').style.transform = 'scale(1.1)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.closest('a').style.backgroundColor = 'transparent';
+                                e.target.closest('a').style.transform = 'scale(1)';
+                            }}
+                            onClick={() => toggleSidebar()}
+                        >
+                            {item.icon}
+                        </Link>
+                    ))}
+                    
+                    {/* Collapsed Logout Button */}
+                    <Link
+                        to="/"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "8px",
+                            color: "#dc2626",
+                            textDecoration: "none",
+                            transition: "all 0.2s ease",
+                            marginTop: "auto",
+                            marginBottom: "20px",
+                            borderTop: "1px solid #e5e7eb",
+                            paddingTop: "20px"
+                        }}
+                        onMouseEnter={(e) => {
+                            e.target.closest('a').style.backgroundColor = '#fef2f2';
+                            e.target.closest('a').style.transform = 'scale(1.1)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.closest('a').style.backgroundColor = 'transparent';
+                            e.target.closest('a').style.transform = 'scale(1)';
+                        }}
+                        onClick={() => {
+                            localStorage.removeItem('authToken');
+                            localStorage.removeItem('user');
+                        }}
+                    >
+                        <DoorOpen size={20} />
+                    </Link>
+                </div>
+            )}
+            
+            {/* Full Sidebar */}
+            <div style={container} onMouseLeave={handleMouseLeave}>
+                <motion.nav
+                    initial={false}
+                    animate={isCollapsed ? "closed" : "open"}
+                    custom={height}
+                    ref={containerRef}
+                    style={nav}
+                >
+                    <motion.div style={background} variants={sidebarVariants} custom={height} />
                 {/* Logo Container */}
                 <motion.div
                     style={{
@@ -112,8 +197,9 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                    </Link>
                 </motion.div>
                 <MenuToggle toggle={toggleSidebar} />
-            </motion.nav>
-        </div>
+                </motion.nav>
+            </div>
+        </>
     )
 }
 
@@ -238,12 +324,13 @@ const container = {
     height: "100vh",
     backgroundColor: "transparent",
     borderRadius: 0,
-    overflow: "hidden",
+    overflow: "visible",
     zIndex: 40,
 }
 
 const nav = {
     width: 300,
+    position: "relative",
 }
 
 const background = {

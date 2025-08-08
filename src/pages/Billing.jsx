@@ -3,7 +3,6 @@ import Chart from 'chart.js/auto';
 
 const Billing = () => {
   useEffect(() => {
-    // Usage Chart
     const ctx = document.getElementById('usageChart').getContext('2d');
     let chartInstance = null;
     if (ctx) {

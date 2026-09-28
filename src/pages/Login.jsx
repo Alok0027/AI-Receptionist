@@ -1,12 +1,35 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import applelogo from "../assets/applelogo.svg";
 import blackstar from "../assets/blackstar.svg";
 import whitestar from "../assets/whitestar.svg";
 import googlelogo from "../assets/google.svg";
 import team2 from "../assets/team2.jpeg"
+import { useAuth } from "../context/AuthContext";
 
 
 const Login = () => {
+    const { login } = useAuth();
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
+        setSubmitting(true);
+        try {
+            await login(email, password);
+            navigate("/dashboard");
+        } catch (err) {
+            setError(err.message || "Unable to sign in");
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return(
         <div className="min-h-screen bg-stone-50">            
 
@@ -42,7 +65,12 @@ const Login = () => {
                         </div>
 
                         {/* Login Form */}
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
+                            {error && (
+                                <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                                    {error}
+                                </div>
+                            )}
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-black mb-1">
                                     Email address
@@ -53,6 +81,8 @@ const Login = () => {
                                     type="email"
                                     autoComplete="email"
                                     required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="appearance-none relative block w-full px-3 py-3 border border-stone-300 placeholder-stone-500 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black focus:z-10 sm:text-sm"
                                     placeholder="Enter your email"
                                 />
@@ -67,6 +97,8 @@ const Login = () => {
                                     type="password"
                                     autoComplete="current-password"
                                     required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className="appearance-none relative block w-full px-3 py-3 border border-stone-300 placeholder-stone-500 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black focus:z-10 sm:text-sm"
                                     placeholder="Enter your password"
                                 />
@@ -92,9 +124,13 @@ const Login = () => {
                             </div>
 
                             <div>
-                                <Link to="/dashboard" className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-black hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all duration-200">
-                                    Sign in to your account
-                                </Link>
+                                <button
+                                    type="submit"
+                                    disabled={submitting}
+                                    className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-black hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all duration-200 disabled:opacity-60"
+                                >
+                                    {submitting ? "Signing in..." : "Sign in to your account"}
+                                </button>
                                 <div className="text-center mt-3">
                                     <p className="text-sm text-black">
                                         Don’t have an account?{" "}

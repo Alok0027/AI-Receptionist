@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// The registered account (the business paying for the AI receptionist).
+model Business {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+
+  firstName String
+  lastName  String
+  phone     String?
+  location  String?
+  jobTitle  String?
+  company   String?
+  industry  String?
+
+  aiComplexity     String  @default("basic")   // basic | advanced | custom
+  supportLevel     String  @default("standard") // standard | priority | dedicated
+  selectedServices String  @default("[]")       // JSON-encoded string[]
+  onboarding       String  @default("{}")       // JSON-encoded extra KYC/pricing fields from the registration wizard
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  clients      Client[]
+  calls        Call[]
+  appointments Appointment[]
+  knowledge    KnowledgeEntry[]
+}
+
+// A caller / customer of the business — distinct from the Business account itself.
+model Client {
+  id         String   @id @default(cuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  name  String
+  email String?
+  phone String?
+  location String?
+  type  String @default("prospect") // new | existing | prospect
+
+  createdAt DateTime @default(now())
+
+  calls        Call[]
+  appointments Appointment[]
+
+  @@index([businessId])
+}
+
+model Call {
+  id         String   @id @default(cuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  clientId   String?
+  client     Client?  @relation(fields: [clientId], references: [id], onDelete: SetNull)
+
+  caller String
+  phone  String
+  email  String?
+
+  type     String // incoming | outgoing
+  status   String // completed | missed | live
+  priority String @default("normal") // high | normal | low
+  disposition String? // business | sales | support | follow-up | ...
+
+  durationSeconds Int    @default(0)
+  timestamp       DateTime @default(now())
+
+  resolved   Boolean @default(false)
+  resolvedBy String? // knowledge-base | transfer | callback | null
+
+  summary    String?
+  transcript String?
+  keywords   String  @default("[]") // JSON-encoded string[]
+  location   String?
+  rating     Int?
+  recordingUrl String?
+
+  aiConfidence Float?
+  sentiment    String? // positive | neutral | negative | urgent | concerned ...
+
+  transferredTo      String?
+  callbackScheduled   Boolean @default(false)
+  spamBlocked         Boolean @default(false)
+  notes               String?
+
+  createdAt DateTime @default(now())
+
+  @@index([businessId])
+  @@index([clientId])
+}
+
+model Appointment {
+  id         String   @id @default(cuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  clientId   String?
+  client     Client?  @relation(fields: [clientId], references: [id], onDelete: SetNull)
+
+  name  String
+  email String?
+  phone String?
+
+  date    DateTime
+  service String?
+  notes   String?
+  priority String @default("medium") // low | medium | high
+  status   String @default("pending") // pending | confirmed | cancelled | completed
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([businessId])
+  @@index([clientId])
+}
+
+// FAQ / knowledge-base articles the AI receptionist draws answers from (RAG source).
+model KnowledgeEntry {
+  id         String   @id @default(cuid())
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  question String
+  answer   String
+  category String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([businessId])
+}

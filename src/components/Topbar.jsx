@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Bell, ChevronDown, UserCircle, DoorOpen, KeyRound } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import AlokK from "../assets/AlokK.jpeg";
+import { useAuth } from '../context/AuthContext';
 
 const Topbar = ({ currentPageTitle = 'Dashboard' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { business, logout } = useAuth();
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
@@ -28,8 +29,7 @@ const Topbar = ({ currentPageTitle = 'Dashboard' }) => {
   }, []);
 
   const handleLogout = () => {
-    // TODO: Implement actual logout logic (e.g., clearing tokens, updating context)
-    setIsLoggedIn(false);
+    logout();
     setIsDropdownOpen(false);
     navigate('/login');
   };
@@ -59,7 +59,7 @@ const Topbar = ({ currentPageTitle = 'Dashboard' }) => {
                                 alt="User"
                                 className="w-8 h-8 rounded-full border border-stone-300"
                             />
-                            <span className="text-sm text-stone-700">Alok</span>
+                            <span className="text-sm text-stone-700">{business?.firstName || 'Account'}</span>
                             <ChevronDown size={16} className={`text-stone-500 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
 

@@ -1,13 +1,20 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
+    const { register } = useAuth();
+    const navigate = useNavigate();
     const [currentStep, setCurrentStep] = useState(1);
+    const [submitting, setSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState('');
     const [formData, setFormData] = useState({
         // Step 1: Basic Information
         firstName: '',
         lastName: '',
         email: '',
+        password: '',
+        confirmPassword: '',
         phone: '',
         location: '',
         jobTitle: '',
@@ -53,6 +60,8 @@ const Register = () => {
             if (!formData.location) newErrors.location = 'Location is required';
             if (!formData.jobTitle) newErrors.jobTitle = 'Job title is required';
             if (!emailVerified) newErrors.email = 'Please verify your email address';
+            if (!formData.password || formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
+            if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
         }
         
         if (step === 2) {
@@ -106,6 +115,44 @@ const Register = () => {
     };
     
     const pricing = calculatePricing();
+
+    const handleSubmitRegistration = async () => {
+        setSubmitError('');
+        setSubmitting(true);
+        try {
+            await register({
+                email: formData.email,
+                password: formData.password,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                phone: formData.phone,
+                location: formData.location,
+                jobTitle: formData.jobTitle,
+                company: formData.company,
+                industry: formData.industry,
+                aiComplexity: pricing.basePrice >= 99 ? 'advanced' : 'basic',
+                supportLevel: formData.selectedServices?.includes('priority') ? 'priority' : 'standard',
+                selectedServices: formData.selectedServices,
+                onboarding: {
+                    experience: formData.experience,
+                    profession: formData.profession,
+                    licenseNumber: formData.licenseNumber,
+                    businessRegistration: formData.businessRegistration,
+                    taxId: formData.taxId,
+                    expectedCalls: formData.expectedCalls,
+                    clientComplexity: formData.clientComplexity,
+                    salesCycle: formData.salesCycle,
+                    averageTicketSize: formData.averageTicketSize,
+                    monthlyPrice: pricing.total,
+                },
+            });
+            navigate('/dashboard');
+        } catch (err) {
+            setSubmitError(err.message || 'Unable to create your account');
+        } finally {
+            setSubmitting(false);
+        }
+    };
     
     return(
         <div className="min-h-screen bg-stone-50 mt-20">
@@ -216,7 +263,35 @@ const Register = () => {
                                     </div>
                                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                                 </div>
-                                
+
+                                <div>
+                                    <label className="block text-sm font-medium text-black mb-2">Password *</label>
+                                    <input
+                                        type="password"
+                                        value={formData.password}
+                                        onChange={(e) => handleInputChange('password', e.target.value)}
+                                        className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black ${
+                                            errors.password ? 'border-red-500' : 'border-stone-300'
+                                        }`}
+                                        placeholder="At least 8 characters"
+                                    />
+                                    {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-black mb-2">Confirm Password *</label>
+                                    <input
+                                        type="password"
+                                        value={formData.confirmPassword}
+                                        onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                                        className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black ${
+                                            errors.confirmPassword ? 'border-red-500' : 'border-stone-300'
+                                        }`}
+                                        placeholder="Re-enter your password"
+                                    />
+                                    {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
+                                </div>
+
                                 <div>
                                     <label className="block text-sm font-medium text-black mb-2">Phone Number *</label>
                                     <input 
@@ -554,6 +629,9 @@ const Register = () => {
                     )}
                     
                     {/* Navigation Buttons */}
+                    {submitError && (
+                        <p className="text-red-500 text-sm mt-4 text-center">{submitError}</p>
+                    )}
                     <div className="flex justify-between mt-8 pt-6 border-t border-stone-200">
                         <div>
                             {currentStep > 1 && (
@@ -583,10 +661,12 @@ const Register = () => {
                                     Continue
                                 </button>
                             ) : (
-                                <button 
-                                    className="px-8 py-3 bg-black text-white rounded-lg hover:bg-stone-800 transition-colors font-normal"
+                                <button
+                                    onClick={handleSubmitRegistration}
+                                    disabled={submitting}
+                                    className="px-8 py-3 bg-black text-white rounded-lg hover:bg-stone-800 transition-colors font-normal disabled:opacity-60"
                                 >
-                                    Start Free Trial - ${pricing.total}/month
+                                    {submitting ? 'Creating your account...' : `Start Free Trial - $${pricing.total}/month`}
                                 </button>
                             )}
                         </div>

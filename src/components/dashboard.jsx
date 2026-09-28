@@ -56,12 +56,52 @@ import StaffAttendanceWidget from './dashboard/StaffAttendanceWidget';
 import WebsiteAnalyticsWidget from './dashboard/WebsiteAnalyticsWidget';
 import AIInsightsWidget from './dashboard/AIInsightsWidget';
 import CalendarModal from './dashboard/CalendarModal';
+import { dashboardApi, callsApi, appointmentsApi } from '../lib/api';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [notifications, setNotifications] = useState(5);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showCalendarModal, setShowCalendarModal] = useState(false);
+
+  // Real data pulled from the backend — this is the only part of this dashboard
+  // wired to your actual calls/appointments. Everything else on this page
+  // (payments, revenue, inventory, staff, website analytics) is still template
+  // demo data; see the backend README for what's real vs. illustrative.
+  const [liveSummary, setLiveSummary] = useState(null);
+  const [todaysAppointments, setTodaysAppointments] = useState([]);
+  const [callsToday, setCallsToday] = useState({ received: 0, answered: 0, missed: 0 });
+
+  useEffect(() => {
+    const todayStr = new Date().toISOString().slice(0, 10);
+
+    Promise.all([dashboardApi.summary(), callsApi.list(), appointmentsApi.list()])
+      .then(([summaryRes, callsRes, appointmentsRes]) => {
+        setLiveSummary(summaryRes.summary);
+
+        const todaysCalls = callsRes.calls.filter((c) => c.timestamp.slice(0, 10) === todayStr);
+        setCallsToday({
+          received: todaysCalls.length,
+          answered: todaysCalls.filter((c) => c.status === 'completed').length,
+          missed: todaysCalls.filter((c) => c.status === 'missed').length,
+        });
+
+        setTodaysAppointments(
+          appointmentsRes.appointments
+            .filter((a) => a.date.slice(0, 10) === todayStr)
+            .map((a) => ({
+              time: new Date(a.date).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
+              client: a.name,
+              type: a.service || 'Appointment',
+              status: a.status,
+              phone: a.phone,
+            }))
+        );
+      })
+      .catch(() => {
+        // Leave live data null/empty on failure — the UI below falls back to zero-states.
+      });
+  }, []);
 
   // Enhanced sample data with more comprehensive metrics
   const [dashboardData, setDashboardData] = useState({
@@ -215,11 +255,9 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatCard
               title="Calls Today"
-              value={dashboardData.calls.received}
-              subtitle={`${dashboardData.calls.answered} answered`}
+              value={callsToday.received}
+              subtitle={`${callsToday.answered} answered · ${callsToday.missed} missed`}
               icon={Phone}
-              trend={dashboardData.calls.trend}
-              trendDirection="up"
             />
             <StatCard
               title="Payments"
@@ -259,9 +297,13 @@ const Dashboard = () => {
                 <Calendar className="w-6 h-6 text-stone-600" />
               </div>
               <div className="space-y-3 max-h-80 overflow-y-auto">
-                {dashboardData.appointments.map((appointment, index) => (
-                  <AppointmentCard key={index} appointment={appointment} />
-                ))}
+                {todaysAppointments.length === 0 ? (
+                  <p className="text-sm text-stone-500 py-6 text-center">No appointments booked for today.</p>
+                ) : (
+                  todaysAppointments.map((appointment, index) => (
+                    <AppointmentCard key={index} appointment={appointment} />
+                  ))
+                )}
               </div>
               <button
                 onClick={() => setShowCalendarModal(true)}
@@ -271,69 +313,66 @@ const Dashboard = () => {
               </button>
             </div>
             
-            {/* AI Performance Summary */}
+            {/* Call Performance Summary — real numbers from your calls/appointments data.
+                (AI-attributed metrics like accuracy/automation rate need a live voice
+                pipeline logging outcomes, which isn't connected yet, so they're left out
+                rather than invented.) */}
             <div className="bg-white rounded-xl shadow-lg p-6 border border-stone-200">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-medium text-stone-900">AI Performance Today</h3>
+                <h3 className="text-xl font-medium text-stone-900">Call Performance</h3>
                 <Brain className="w-6 h-6 text-stone-600" />
               </div>
-              
+
               <div className="space-y-4">
-                {/* AI Accuracy */}
                 <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
                       <CheckCircle className="w-4 h-4 text-green-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-stone-900">AI Accuracy</p>
-                      <p className="text-sm text-stone-600">Call handling success</p>
+                      <p className="font-medium text-stone-900">Total Calls</p>
+                      <p className="text-sm text-stone-600">All time</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-green-600">94.2%</p>
-                    <p className="text-sm text-green-600">+3.1%</p>
+                    <p className="text-2xl font-bold text-green-600">{liveSummary?.totalCalls ?? '—'}</p>
                   </div>
                 </div>
-                
-                {/* Response Time */}
+
                 <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Clock className="w-4 h-4 text-blue-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-stone-900">Avg Response</p>
-                      <p className="text-sm text-stone-600">Time per call</p>
+                      <p className="font-medium text-stone-900">Avg Handle Time</p>
+                      <p className="text-sm text-stone-600">Per call</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-blue-600">1.8s</p>
-                    <p className="text-sm text-green-600">-12.3%</p>
+                    <p className="text-2xl font-bold text-blue-600">
+                      {liveSummary ? `${liveSummary.averageHandleTimeSeconds}s` : '—'}
+                    </p>
                   </div>
                 </div>
-                
-                {/* Automation Rate */}
+
                 <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
                       <Star className="w-4 h-4 text-purple-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-stone-900">Automation</p>
-                      <p className="text-sm text-stone-600">Calls handled by AI</p>
+                      <p className="font-medium text-stone-900">Satisfaction</p>
+                      <p className="text-sm text-stone-600">Avg. caller rating</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-purple-600">87.5%</p>
-                    <p className="text-sm text-green-600">+5.2%</p>
+                    <p className="text-2xl font-bold text-purple-600">
+                      {liveSummary?.satisfactionScore != null ? `${liveSummary.satisfactionScore}/5` : '—'}
+                    </p>
                   </div>
                 </div>
               </div>
-              
-              <button className="w-full mt-4 py-2 text-stone-900 hover:bg-stone-50 rounded-lg transition-colors border border-stone-200">
-                View Detailed Analytics
-              </button>
             </div>
           </div>
 
@@ -362,7 +401,7 @@ const Dashboard = () => {
       <CalendarModal
         showCalendarModal={showCalendarModal}
         setShowCalendarModal={setShowCalendarModal}
-        appointments={dashboardData.appointments}
+        appointments={todaysAppointments}
       />
     </>
   );

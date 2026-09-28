@@ -14,6 +14,7 @@ import Integration from './pages/Integration';
 import SupportHelpPage from './pages/SupportHelpPage';
 import Profile from './pages/Profile';
 import SoftwareLayout from './components/SoftwareLayout';
+import ProtectedRoute from './components/ProtectedRoute';
 import Contact from './components/Contact';
 import UpdatesPage from './pages/Updates';
 import AboutUs from './pages/AboutUs';
@@ -60,67 +61,83 @@ function AppContent() {
         <Route
           path="/dashboard/*"
           element={
-            <SoftwareLayout>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-              </Routes>
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                </Routes>
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/call-management"
           element={
-            <SoftwareLayout>
-              <Callmanage />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Callmanage />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/appointments"
           element={
-            <SoftwareLayout>
-              <Appointment />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Appointment />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/knowledge"
           element={
-            <SoftwareLayout>
-              <Knowledge />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Knowledge />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/billing"
           element={
-            <SoftwareLayout>
-              <Billing />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Billing />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/integrations"
           element={
-            <SoftwareLayout>
-              <Integration />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Integration />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/support-help"
           element={
-            <SoftwareLayout>
-              <SupportHelpPage />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <SupportHelpPage />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <SoftwareLayout>
-              <Profile />
-            </SoftwareLayout>
+            <ProtectedRoute>
+              <SoftwareLayout>
+                <Profile />
+              </SoftwareLayout>
+            </ProtectedRoute>
           }
         />
         </Routes>

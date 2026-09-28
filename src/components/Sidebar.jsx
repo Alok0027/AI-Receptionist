@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
   LayoutDashboard,
   PhoneCall,
@@ -29,11 +30,18 @@ const navItems = [
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     const containerRef = useRef(null)
     const { height } = useDimensions(containerRef)
+    const { logout } = useAuth();
+    const navigate = useNavigate();
 
     const handleMouseLeave = () => {
         if (!isCollapsed) {
             toggleSidebar();
         }
+    };
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
     };
 
     return (
@@ -87,7 +95,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                     
                     {/* Collapsed Logout Button */}
                     <Link
-                        to="/"
+                        to="/login"
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -111,10 +119,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                             e.target.closest('a').style.backgroundColor = 'transparent';
                             e.target.closest('a').style.transform = 'scale(1)';
                         }}
-                        onClick={() => {
-                            localStorage.removeItem('authToken');
-                            localStorage.removeItem('user');
-                        }}
+                        onClick={logout}
                     >
                         <DoorOpen size={20} />
                     </Link>
@@ -122,7 +127,10 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
             )}
             
             {/* Full Sidebar */}
-            <div style={container} onMouseLeave={handleMouseLeave}>
+            <div
+                style={{ ...container, pointerEvents: isCollapsed ? 'none' : 'auto' }}
+                onMouseLeave={handleMouseLeave}
+            >
                 <motion.nav
                     initial={false}
                     animate={isCollapsed ? "closed" : "open"}
@@ -174,7 +182,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                     whileTap={{ scale: 0.95 }}
                 >
                    <Link
-                       to="/"
+                       to="/login"
                        style={{
                            color: '#dc2626',
                            textDecoration: 'none',
@@ -182,11 +190,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
                            alignItems: 'center',
                            width: '100%'
                        }}
-                       onClick={() => {
-                           // Clear any stored authentication data
-                           localStorage.removeItem('authToken');
-                           localStorage.removeItem('user');
-                       }}
+                       onClick={logout}
                    >
                        <div style={iconPlaceholder}>
                            <DoorOpen size={20} />
